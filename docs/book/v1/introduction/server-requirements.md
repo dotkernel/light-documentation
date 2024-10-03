@@ -11,7 +11,7 @@ For production, we highly recommend a *nix based system.
 
 > The repository includes a default `.htaccess` file in the `public` folder.
 
-### NGINX
+### Nginx
 
 You need to convert the provided Apache related `.htaccess` file into Nginx configuration instructions.
 
