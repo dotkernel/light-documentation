@@ -394,10 +394,6 @@
                 </li>
             
                 <li class="toc__entry">
-                    <a href="#rdbms" class="toc__link nav-link">RDBMS</a>
-                </li>
-            
-                <li class="toc__entry">
                     <a href="#recommended-extensions" class="toc__link nav-link">Recommended extensions</a>
                 </li>
             
@@ -428,12 +424,10 @@
 <li>.htaccess support <code>(AllowOverride All)</code></li>
 </ul>
 <blockquote>
-<p>The repository includes a default <code>.htacess</code> file in the <code>public</code> folder</p>
+<p>The repository includes a default <code>.htaccess</code> file in the <code>public</code> folder.</p>
 </blockquote>
 <h3 id="nginx">NGINX</h3>
-<ul>
-<li>you need to convert the provided Apache related <code>.htaccess</code> file into Nginx configuration instructions</li>
-</ul>
+<p>You need to convert the provided Apache related <code>.htaccess</code> file into Nginx configuration instructions.</p>
 <h2 id="php-82">PHP &gt;= 8.2</h2>
 <p>Both mod_php and FCGI (FPM) are supported.</p>
 <h2 id="required-settings-and-modules-extensions">Required Settings and Modules &amp; Extensions</h2>
@@ -441,23 +435,16 @@
 <li>memory_limit &gt;= 128M</li>
 <li>upload_max_filesize and post_max_size &gt;= 100M (depending on your data)</li>
 <li>mbstring</li>
-<li>CLI SAPI (for Cron Jobs)</li>
 <li>Composer (added to $PATH)</li>
-</ul>
-<h2 id="rdbms">RDBMS</h2>
-<ul>
-<li>MariaDB &gt;= 10.11 LTS</li>
 </ul>
 <h2 id="recommended-extensions">Recommended extensions</h2>
 <ul>
 <li>opcache</li>
-<li>pdo_mysql or mysqli (if using MySQL or MariaDB as RDBMS)</li>
 <li>dom - if working with markup files structure (html, xml etc.)</li>
 <li>simplexml - working with xml files</li>
 <li>gd, exif - if working with images</li>
 <li>zlib, zip, bz2 - if compressing files</li>
 <li>curl (required if APIs are used)</li>
-<li>sqlite3 - for tests</li>
 </ul>
 
 
