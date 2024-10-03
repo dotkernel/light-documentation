@@ -9,7 +9,7 @@ For production, we highly recommend a *nix based system.
 * mod_rewrite
 * .htaccess support `(AllowOverride All)`
 
-> The repo contains in the public folder a default `.htacess` file
+> The repository includes a default `.htacess` file in the `public` folder
 
 ### NGINX
 
