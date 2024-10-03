@@ -1,0 +1,29 @@
+docs_dir: docs/book
+site_dir: docs/html
+extra:
+  project: Light
+  current_version: v1
+  versions:
+    - v1
+nav:
+  - Home: index.md
+  - v1:
+      - Introduction: v1/introduction.md
+      - Overview:
+          - "Server Requirements": v1/introduction/server-requirements.md
+          - "File Structure": v1/introduction/file-structure.md
+          - "Packages": v1/introduction/packages.md
+      - Installation:
+          - "Getting Started": v1/installation/getting-started.md
+          - "Composer": v1/installation/composer.md
+          - "Configuration Files": v1/installation/configuration-files.md
+          - "Development Mode": v1/installation/development-mode.md
+          - "Running the Application": v1/installation/running-the-application.md
+          - "FAQ": v1/installation/faq.md
+      - Core Features:
+          - "NPM Commands": v1/core-features/npm-commands.md
+site_name: light
+site_description: "DotKernel Light"
+repo_url: "https://github.com/dotkernel/light"
+plugins:
+  - search

@@ -1,0 +1,13 @@
+{
+  "name": "dotkernel/light-documentation",
+  "description": "DotKernel Light documentation markdown files.",
+  "type": "metapackage",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "DotKernel Team",
+      "email": "team@dotkernel.com"
+    }
+  ],
+  "require": {}
+}
