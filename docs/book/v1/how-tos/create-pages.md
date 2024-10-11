@@ -76,7 +76,7 @@ public function getTemplates(): array
 
 ## Accessing the page
 
-The url for the new page in this example is `/page/examplePage`.
+The url for the new page in this example is `/page/example-page`.
 
-> Because of the way routing works, you can also use `/page/example-page`.
-> Dot '.', dash '-', underscore '_' are filtered from the `action` parameter in the routing `/page[/{action}]` and calls the `examplePageAction` function.
+> Because of the way routing works, dot (.), dash (-), underscore (_) are filtered from the `action` parameter in the routing `/page[/{action}]`.
+> As a result, the `examplePageAction` function in called.
