@@ -36,7 +36,7 @@ The `content` block is where your page copy goes.
     </div>
 
     <div>
-	Add cool content here!	
+        Add cool content here!
     </div>
 {% endblock %}
 ```
@@ -62,16 +62,16 @@ If you intend to group your templates into more folders, simply add another elem
 > It's not necessary to match the key name with the folder name.
 
 ```php
-    public function getTemplates(): array
-    {
-        return [
-            'paths' => [
-                'page'    => [__DIR__ . '/../templates/page'],
-                'how-tos' => [__DIR__ . '/../templates/how-tos'],
-                'info'    => [__DIR__ . '/../templates/data'],
-            ],
-        ];
-    }
+public function getTemplates(): array
+{
+    return [
+        'paths' => [
+            'page'    => [__DIR__ . '/../templates/page'],
+            'how-tos' => [__DIR__ . '/../templates/how-tos'],
+            'info'    => [__DIR__ . '/../templates/data'],
+        ],
+    ];
+}
 ```
 
 ## Accessing the page

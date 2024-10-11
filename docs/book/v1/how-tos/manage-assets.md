@@ -54,5 +54,6 @@ Whenever you commit changes to those files, make sure to increase the value of t
 ...
 <script src="{{ asset('js/cls_dk.js?v=5') }}"></script>
 ```
+
 > The values 3 and 5 are provided as an example.
 > The important thing is to use values for each file that you haven't used before, so incrementing the value for `v` is a simple way to track each change.
