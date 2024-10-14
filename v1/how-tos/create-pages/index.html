@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="light">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/core-features/npm-commands/">
+        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/how-tos/create-pages/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>NPM Commands - light - DotKernel Documentation</title>
+        <title>Creating pages - light - DotKernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -150,20 +150,8 @@
                     <li class="breadcrumb-item"><a href="../../..">light</a></li>
 
                     
-                        
-                            
-                            
-                        
-                    
-                        
-                            
-                            
-                                <li class="breadcrumb-item">Core Features</li>
-                            
-                        
-                    
 
-                    <li class="breadcrumb-item active" aria-current="page">NPM Commands</li>
+                    <li class="breadcrumb-item active" aria-current="page">Creating pages</li>
                 
             
         </ol>
@@ -354,8 +342,8 @@
     <ul class="subnavigation__list collapse" id="core-features">
         
         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">NPM Commands</a>
+<li class="subnavigation__list-item ">
+    <a href="../../core-features/npm-commands/" class="subnavigation__link">NPM Commands</a>
 </li>
 
         
@@ -389,31 +377,31 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../create-pages.md" class="subnavigation__link">Create Pages</a>
+    <a href="../../core-features/create-pages.md" class="subnavigation__link">Create Pages</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../twitter-opengraph-cards.md" class="subnavigation__link">Set Up Twitter and OpenGraph Cards</a>
+    <a href="../../core-features/twitter-opengraph-cards.md" class="subnavigation__link">Set Up Twitter and OpenGraph Cards</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../edit-top-menu.md" class="subnavigation__link">Edit the Top Menu</a>
+    <a href="../../core-features/edit-top-menu.md" class="subnavigation__link">Edit the Top Menu</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../edit-footer.md" class="subnavigation__link">Edit the Footer</a>
+    <a href="../../core-features/edit-footer.md" class="subnavigation__link">Edit the Footer</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../manage-assets.md" class="subnavigation__link">Manage Assets</a>
+    <a href="../../core-features/manage-assets.md" class="subnavigation__link">Manage Assets</a>
 </li>
 
         
@@ -435,6 +423,25 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#the-action-function" class="toc__link nav-link">The action function</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#the-page-content" class="toc__link nav-link">The page content</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#accessing-the-page" class="toc__link nav-link">Accessing the page</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -447,41 +454,75 @@
 
     
     
-<!--        <h2 class="chapter__headline text-black-50">Core Features</h2>-->
+<!--        <h2 class="chapter__headline text-black-50"></h2>-->
     
 
-    <h1 id="npm-commands">NPM Commands</h1>
-<p>To install dependencies into the <code>node_modules</code> directory run this command.</p>
-<pre class="highlight"><code class="language-shell">npm install</code></pre>
-<p>If <code>npm install</code> fails, this could be caused by user permissions of npm.
-Recommendation is to install npm through <code>Node Version Manager</code>.</p>
-<p>The watch command compiles the components then watches the files and recompiles when one of them changes:</p>
-<pre class="highlight"><code class="language-shell">npm run watch</code></pre>
-<p>When you are done making changes to your code, this command compiles the assets locally, minifies them and makes them ready for production:</p>
-<pre class="highlight"><code class="language-shell">npm run prod</code></pre>
+    <h1 id="creating-pages">Creating pages</h1>
+<h2 id="the-action-function">The <code>action</code> function</h2>
+<p>The first step is to add the new pages in <code>src/Page/src/Controller/PageController.php</code>.
+This means adding an <code>Action</code> function for each page, as seen below.</p>
+<pre class="highlight"><code class="language-php">    public function examplePageAction(): ResponseInterface
+    {
+        return new HtmlResponse(
+            $this-&gt;template-&gt;render('page::example-template')
+        );
+    }</code></pre>
+<h2 id="the-page-content">The page content</h2>
+<p>Each page has its own template, so the next step is to create the template files in the <code>src/Page/templates/page/</code> folder.
+For the example above, the <code>src/Page/templates/page/example-template.html.twig</code> file was created.
+We won't include the entire code here, just the basic building blocks.
+The <code>content</code> block is where your page copy goes.</p>
+<pre class="highlight"><code class="language-twig">{% extends '@layout/default.html.twig' %}
+
+{% block title %}Page Title{% endblock %}
+
+{% block page_title %}{% endblock %}
+
+{% block content %}
+    &lt;div class="page-intro"&gt;
+        &lt;div class="container"&gt;
+            &lt;h2&gt;Add title here!&lt;/h2&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        Add cool content here!
+    &lt;/div&gt;
+{% endblock %}</code></pre>
+<h3 id="grouping-templates">Grouping templates</h3>
+<p>The default grouping is under the <code>page</code> folder.
+This item is defined in <code>src/Page/src/ConfigProvider.php</code> in <code>getTemplates()</code>, like seen below.</p>
+<pre class="highlight"><code class="language-php">    public function getTemplates(): array
+    {
+        return [
+            'paths' =&gt; [
+                'page' =&gt; [__DIR__ . '/../templates/page'],
+            ],
+        ];
+    }</code></pre>
+<p>If you intend to group your templates into more folders, simply add another element under <code>paths</code>.</p>
+<blockquote>
+<p>It's not necessary to match the key name with the folder name.</p>
+</blockquote>
+<pre class="highlight"><code class="language-php">public function getTemplates(): array
+{
+    return [
+        'paths' =&gt; [
+            'page'    =&gt; [__DIR__ . '/../templates/page'],
+            'how-tos' =&gt; [__DIR__ . '/../templates/how-tos'],
+            'info'    =&gt; [__DIR__ . '/../templates/data'],
+        ],
+    ];
+}</code></pre>
+<h2 id="accessing-the-page">Accessing the page</h2>
+<p>The url for the new page in this example is <code>/page/example-page</code>.</p>
+<blockquote>
+<p>Because of the way routing works, dot (.), dash (-), underscore (_) are filtered from the <code>action</code> parameter in the routing <code>/page[/{action}]</code>.
+As a result, the <code>examplePageAction</code> function in called.</p>
+</blockquote>
 
 
 
-
-    <nav>
-    <ul class="page-nav hidden-print">
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../installation/faq/">
-                    <small class="page-nav__label">Previous</small>
-                    <i class="bi bi-chevron-left"></i>
-                    FAQ
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-        </li>
-    </ul>
-</nav>
 
 
 

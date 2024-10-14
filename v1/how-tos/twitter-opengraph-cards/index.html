@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="light">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/core-features/npm-commands/">
+        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/how-tos/twitter-opengraph-cards/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>NPM Commands - light - DotKernel Documentation</title>
+        <title>Twitter and OpenGraph cards - light - DotKernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -150,20 +150,8 @@
                     <li class="breadcrumb-item"><a href="../../..">light</a></li>
 
                     
-                        
-                            
-                            
-                        
-                    
-                        
-                            
-                            
-                                <li class="breadcrumb-item">Core Features</li>
-                            
-                        
-                    
 
-                    <li class="breadcrumb-item active" aria-current="page">NPM Commands</li>
+                    <li class="breadcrumb-item active" aria-current="page">Twitter and OpenGraph cards</li>
                 
             
         </ol>
@@ -354,8 +342,8 @@
     <ul class="subnavigation__list collapse" id="core-features">
         
         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">NPM Commands</a>
+<li class="subnavigation__list-item ">
+    <a href="../../core-features/npm-commands/" class="subnavigation__link">NPM Commands</a>
 </li>
 
         
@@ -389,31 +377,31 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../create-pages.md" class="subnavigation__link">Create Pages</a>
+    <a href="../../core-features/create-pages.md" class="subnavigation__link">Create Pages</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../twitter-opengraph-cards.md" class="subnavigation__link">Set Up Twitter and OpenGraph Cards</a>
+    <a href="../../core-features/twitter-opengraph-cards.md" class="subnavigation__link">Set Up Twitter and OpenGraph Cards</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../edit-top-menu.md" class="subnavigation__link">Edit the Top Menu</a>
+    <a href="../../core-features/edit-top-menu.md" class="subnavigation__link">Edit the Top Menu</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../edit-footer.md" class="subnavigation__link">Edit the Footer</a>
+    <a href="../../core-features/edit-footer.md" class="subnavigation__link">Edit the Footer</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../manage-assets.md" class="subnavigation__link">Manage Assets</a>
+    <a href="../../core-features/manage-assets.md" class="subnavigation__link">Manage Assets</a>
 </li>
 
         
@@ -447,41 +435,37 @@
 
     
     
-<!--        <h2 class="chapter__headline text-black-50">Core Features</h2>-->
+<!--        <h2 class="chapter__headline text-black-50"></h2>-->
     
 
-    <h1 id="npm-commands">NPM Commands</h1>
-<p>To install dependencies into the <code>node_modules</code> directory run this command.</p>
-<pre class="highlight"><code class="language-shell">npm install</code></pre>
-<p>If <code>npm install</code> fails, this could be caused by user permissions of npm.
-Recommendation is to install npm through <code>Node Version Manager</code>.</p>
-<p>The watch command compiles the components then watches the files and recompiles when one of them changes:</p>
-<pre class="highlight"><code class="language-shell">npm run watch</code></pre>
-<p>When you are done making changes to your code, this command compiles the assets locally, minifies them and makes them ready for production:</p>
-<pre class="highlight"><code class="language-shell">npm run prod</code></pre>
+    <h1 id="twitter-and-opengraph-cards">Twitter and OpenGraph cards</h1>
+<p>If you want to promote your pages on other platforms, you can post Twitter (X) and OpenGraph cards in the header section in the <code>src/App/templates/layout/default.html.twig</code> file.</p>
+<p>Make sure to update all items based on your page content.</p>
+<pre class="highlight"><code class="language-twig">&lt;!-- Twitter card --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:site" content="@example"&gt;
+&lt;meta name="twitter:title" content="Page title"&gt;
+&lt;meta name="twitter:description" content="Basic description"&gt;
+&lt;meta name="twitter:image" content="{{ url('home') }}images/app/My-image.png"&gt;
+&lt;meta name="twitter:image:alt" content="Image alt"&gt;
+
+&lt;!-- OpenGraph card --&gt;
+&lt;meta property="og:title" content="Page title"/&gt;
+&lt;meta property="og:type" content="website"/&gt;
+&lt;meta property="og:url" content="{{ url('home') }}"/&gt;
+&lt;meta property="og:image" content="{{ url('home') }}images/app/My-image.png"/&gt;
+&lt;meta property="og:description" content="Basic description"/&gt;</code></pre>
+<p>In the example:</p>
+<ul>
+<li>{{ url('home') }} is the URL for the homepage, but you can also use this code to generate the url for other pages, just like in the canonical URL <code>{% block canonical %}{{ url(routeName ?? null) }}{% endblock %}</code>.<ul>
+<li>The <code>block</code> item is present to mitigate for not-found pages, e.g. when the url is typed incorrectly.</li>
+</ul>
+</li>
+<li>The image from <code>{{ url('home') }}images/app/My-image.png</code> is found in <code>public/images/app/PHP-REST-API.png</code>, but it is copied there by the <code>npm</code> script from <code>src/App/assets/images/PHP-REST-API.png</code>.</li>
+</ul>
 
 
 
-
-    <nav>
-    <ul class="page-nav hidden-print">
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../installation/faq/">
-                    <small class="page-nav__label">Previous</small>
-                    <i class="bi bi-chevron-left"></i>
-                    FAQ
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-        </li>
-    </ul>
-</nav>
 
 
 

@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="light">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/core-features/npm-commands/">
+        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/how-tos/edit-top-menu/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>NPM Commands - light - DotKernel Documentation</title>
+        <title>Edit the top menu - light - DotKernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -150,20 +150,8 @@
                     <li class="breadcrumb-item"><a href="../../..">light</a></li>
 
                     
-                        
-                            
-                            
-                        
-                    
-                        
-                            
-                            
-                                <li class="breadcrumb-item">Core Features</li>
-                            
-                        
-                    
 
-                    <li class="breadcrumb-item active" aria-current="page">NPM Commands</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit the top menu</li>
                 
             
         </ol>
@@ -354,8 +342,8 @@
     <ul class="subnavigation__list collapse" id="core-features">
         
         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">NPM Commands</a>
+<li class="subnavigation__list-item ">
+    <a href="../../core-features/npm-commands/" class="subnavigation__link">NPM Commands</a>
 </li>
 
         
@@ -389,31 +377,31 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../create-pages.md" class="subnavigation__link">Create Pages</a>
+    <a href="../../core-features/create-pages.md" class="subnavigation__link">Create Pages</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../twitter-opengraph-cards.md" class="subnavigation__link">Set Up Twitter and OpenGraph Cards</a>
+    <a href="../../core-features/twitter-opengraph-cards.md" class="subnavigation__link">Set Up Twitter and OpenGraph Cards</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../edit-top-menu.md" class="subnavigation__link">Edit the Top Menu</a>
+    <a href="../../core-features/edit-top-menu.md" class="subnavigation__link">Edit the Top Menu</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../edit-footer.md" class="subnavigation__link">Edit the Footer</a>
+    <a href="../../core-features/edit-footer.md" class="subnavigation__link">Edit the Footer</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../manage-assets.md" class="subnavigation__link">Manage Assets</a>
+    <a href="../../core-features/manage-assets.md" class="subnavigation__link">Manage Assets</a>
 </li>
 
         
@@ -447,41 +435,44 @@
 
     
     
-<!--        <h2 class="chapter__headline text-black-50">Core Features</h2>-->
+<!--        <h2 class="chapter__headline text-black-50"></h2>-->
     
 
-    <h1 id="npm-commands">NPM Commands</h1>
-<p>To install dependencies into the <code>node_modules</code> directory run this command.</p>
-<pre class="highlight"><code class="language-shell">npm install</code></pre>
-<p>If <code>npm install</code> fails, this could be caused by user permissions of npm.
-Recommendation is to install npm through <code>Node Version Manager</code>.</p>
-<p>The watch command compiles the components then watches the files and recompiles when one of them changes:</p>
-<pre class="highlight"><code class="language-shell">npm run watch</code></pre>
-<p>When you are done making changes to your code, this command compiles the assets locally, minifies them and makes them ready for production:</p>
-<pre class="highlight"><code class="language-shell">npm run prod</code></pre>
+    <h1 id="edit-the-top-menu">Edit the top menu</h1>
+<p>The top menu is displayed on all the pages, in the header.
+To edit it, go to <code>src/App/templates/layout/default.html.twig</code> and update the items under <code>id="navbarHeader"</code>.</p>
+<p>You can use the below as an example.</p>
+<pre class="highlight"><code class="language-twig">&lt;div class="menu" id="navbarHeader"&gt;
+    &lt;ul class="navbar-nav mr-auto"&gt;
+      &lt;li class="nav-item dropdown"&gt;
+        &lt;a class="nav-link dropdown-toggle" href="#" id="pageDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"&gt;Grouped Pages&lt;/a&gt;
+        &lt;div class="dropdown-menu" aria-labelledby="pageDropdown"&gt;
+          &lt;a class="dropdown-item" href="{{ url('page', {action: 'home'}) }}"&gt;Home&lt;/a&gt;
+          &lt;a class="dropdown-item" href="https://www.example.com/docs"&gt;Docs&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link" target="_blank" href="{{ url('page', {action: 'firstLink'}) }}"&gt;First Link&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link" target="_blank" href="https://second.example.com/"&gt;Second Link&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<p>Each <code>li</code> element is listed as an item in the top menu.</p>
+<p>There are two different types of elements in the example:</p>
+<ul>
+<li>The <code>Grouped Pages</code> group several urls.
+When you click on the item, the elements grouped under it are listed and can be accessed.
+They can be internal and/or external links.</li>
+<li>The <code>First Link</code> and <code>Second Link</code> are regular links, one an internal link and the other an external one.</li>
+</ul>
+<blockquote>
+<p>You can also replace the <code>nav-item</code> class for the <code>li</code> elements with <code>button-border</code> for a link that looks more like a button.</p>
+</blockquote>
 
 
 
-
-    <nav>
-    <ul class="page-nav hidden-print">
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../installation/faq/">
-                    <small class="page-nav__label">Previous</small>
-                    <i class="bi bi-chevron-left"></i>
-                    FAQ
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-        </li>
-    </ul>
-</nav>
 
 
 
