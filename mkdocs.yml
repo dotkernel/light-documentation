@@ -23,11 +23,11 @@ nav:
       - Core Features:
           - "NPM Commands": v1/core-features/npm-commands.md
       - How tos:
-          - "Create Pages": v1/core-features/create-pages.md
-          - "Set Up Twitter and OpenGraph Cards": v1/core-features/twitter-opengraph-cards.md
-          - "Edit the Top Menu": v1/core-features/edit-top-menu.md
-          - "Edit the Footer": v1/core-features/edit-footer.md
-          - "Manage Assets": v1/core-features/manage-assets.md
+          - "Create Pages": v1/how-tos/create-pages.md
+          - "Set Up Twitter and OpenGraph Cards": v1/how-tos/twitter-opengraph-cards.md
+          - "Edit the Top Menu": v1/how-tos/edit-top-menu.md
+          - "Edit the Footer": v1/how-tos/edit-footer.md
+          - "Manage Assets": v1/how-tos/manage-assets.md
 site_name: light
 site_description: "DotKernel Light"
 repo_url: "https://github.com/dotkernel/light"
