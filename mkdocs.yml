@@ -29,7 +29,7 @@ nav:
           - "Edit the Footer": v1/how-tos/edit-footer.md
           - "Manage Assets": v1/how-tos/manage-assets.md
 site_name: light
-site_description: "DotKernel Light"
+site_description: "Dotkernel Light"
 repo_url: "https://github.com/dotkernel/light"
 plugins:
   - search
