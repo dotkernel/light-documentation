@@ -4,7 +4,7 @@ Dotkernel Light follows the [PSR-4](https://www.php-fig.org/psr/psr-4/) standard
 
 It is a good practice to standardize the file structure of projects.
 
-When using DotKernel Light, the following structure is installed by default:
+When using Dotkernel Light, the following structure is installed by default:
 
 ![Dotkernel Light File Structure!](https://docs.dotkernel.org/img/light/file-structure-dk-light.png)
 

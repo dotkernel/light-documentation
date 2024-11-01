@@ -8,7 +8,7 @@ We recommend running your applications in WSL:
 - set `$baseUrl` in **config/autoload/local.php** to the address of the virtualhost
 - run the application by opening the virtualhost address in your browser
 
-You should see the `DotKernel Light` welcome page.
+You should see the `Dotkernel Light` welcome page.
 
 > If you are getting exceptions or errors regarding some missing services, try running the following command:
 
