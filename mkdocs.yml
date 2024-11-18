@@ -20,9 +20,8 @@ nav:
           - "Development Mode": v1/installation/development-mode.md
           - "Running the Application": v1/installation/running-the-application.md
           - "FAQ": v1/installation/faq.md
-      - Core Features:
-          - "NPM Commands": v1/core-features/npm-commands.md
-      - How tos:
+      - How to:
+          - "Use NPM Commands": v1/core-features/npm-commands.md
           - "Create Pages": v1/how-tos/create-pages.md
           - "Set Up Twitter and OpenGraph Cards": v1/how-tos/twitter-opengraph-cards.md
           - "Edit the Top Menu": v1/how-tos/edit-top-menu.md
