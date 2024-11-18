@@ -2,70 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/introduction/</loc>
-         <lastmod>2024-11-01</lastmod>
-    </url>
-    <url>
-         <loc>https://docs.dotkernel.org/light-documentation/v1/core-features/npm-commands/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/how-tos/create-pages/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/how-tos/edit-footer/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/how-tos/edit-top-menu/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/how-tos/manage-assets/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.dotkernel.org/light-documentation/v1/how-tos/npm-commands/</loc>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/how-tos/twitter-opengraph-cards/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/installation/composer/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/installation/configuration-files/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/installation/development-mode/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/installation/faq/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/installation/getting-started/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/installation/running-the-application/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/introduction/file-structure/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/introduction/packages/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
     <url>
          <loc>https://docs.dotkernel.org/light-documentation/v1/introduction/server-requirements/</loc>
-         <lastmod>2024-11-01</lastmod>
+         <lastmod>2024-11-18</lastmod>
     </url>
 </urlset>

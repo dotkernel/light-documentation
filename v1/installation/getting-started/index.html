@@ -333,59 +333,17 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <li class="subnavigation__list-item">
-    <a data-bs-toggle="collapse" href="#core-features" role="button" aria-expanded="false" aria-controls="core-features">
-        <span class="subnavigation__headline">Core Features</span>
+    <a data-bs-toggle="collapse" href="#how-to" role="button" aria-expanded="false" aria-controls="how-to">
+        <span class="subnavigation__headline">How to</span>
     </a>
-    <ul class="subnavigation__list collapse" id="core-features">
+    <ul class="subnavigation__list collapse" id="how-to">
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../core-features/npm-commands/" class="subnavigation__link">NPM Commands</a>
+    <a href="../../core-features/npm-commands.md" class="subnavigation__link">Use NPM Commands</a>
 </li>
 
-        
-    </ul>
-</li>
-
-                    
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<li class="subnavigation__list-item">
-    <a data-bs-toggle="collapse" href="#how-tos" role="button" aria-expanded="false" aria-controls="how-tos">
-        <span class="subnavigation__headline">How tos</span>
-    </a>
-    <ul class="subnavigation__list collapse" id="how-tos">
         
         
 <li class="subnavigation__list-item ">
@@ -467,10 +425,28 @@
 <p>If you are using Windows as OS on your machine, you can use WSL2 as development environment.</p>
 <p>Read more on <a href="https://www.dotkernel.com/php-development/almalinux-9-in-wsl2-install-php-apache-mariadb-composer-phpmyadmin/">dotkernel.com</a>.</p>
 </blockquote>
-<p>Using your terminal, navigate inside the directory you want to download the project files into.
-Make sure that the directory is empty before proceeding to the download process.
-Once there, run the following command:</p>
+<p>Using your terminal, navigate inside the directory you want to download the project files into.</p>
+<blockquote>
+<p>Make sure that</p>
+<ul>
+<li>The directory is empty before proceeding to the download process.<ul>
+<li>You will get this error if the directory is not empty <code>fatal: destination path '.' already exists and is not an empty directory.</code> and no files will be cloned.</li>
+</ul>
+</li>
+<li>That you have writing permissions on the directory.</li>
+</ul>
+</blockquote>
+<p>Once there, run the following command:</p>
 <pre class="highlight"><code class="language-shell">git clone https://github.com/dotkernel/light.git .</code></pre>
+<p>If everything ran correctly, you can expect to see an output like this, though the numbers may differ.</p>
+<pre class="highlight"><code class="language-shell">Cloning into '.'...
+remote: Enumerating objects: 500, done.
+remote: Counting objects: 100% (500/500), done.
+remote: Compressing objects: 100% (435/435), done.
+remote: Total 500 (delta 51), reused 448 (delta 27), pack-reused 0 (from 0)
+Receiving objects: 100% (500/500), 399.14 KiB | 3.91 MiB/s, done.
+Resolving deltas: 100% (51/51), done.</code></pre>
+<p>You can already open the project in your preferred IDE to double-check the files were copied correctly.</p>
 
 
 
