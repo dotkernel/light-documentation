@@ -23,11 +23,13 @@ This means adding a `Route` for each page, as seen below.
 ```
 
 In order to be displayed this new `example-template` can then be added to the `src/Page/templates/page/example-template.html.twig` in the following way as an example:
+
 ```twig
     <li class="nav-item">
         <a class="nav-link" href="{{ url('page::example-template') }}">Example</a>
     </li>
 ```
+
 ## The page content
 
 Each page has its own template, so the next step is to create the template files in the `src/Page/templates/page/` folder.
