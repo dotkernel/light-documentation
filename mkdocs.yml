@@ -16,7 +16,6 @@ nav:
       - Installation:
           - "Getting Started": v1/installation/getting-started.md
           - "Composer": v1/installation/composer.md
-          - "Configuration Files": v1/installation/configuration-files.md
           - "Development Mode": v1/installation/development-mode.md
           - "Running the Application": v1/installation/running-the-application.md
           - "FAQ": v1/installation/faq.md
