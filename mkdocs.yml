@@ -21,6 +21,7 @@ nav:
           - "FAQ": v1/installation/faq.md
       - How to:
           - "Use NPM Commands": v1/how-tos/npm-commands.md
+          - "Routing": v1/how-tos/routing.md
           - "Create Pages": v1/how-tos/create-pages.md
           - "Set Up Twitter and OpenGraph Cards": v1/how-tos/twitter-opengraph-cards.md
           - "Edit the Top Menu": v1/how-tos/edit-top-menu.md
