@@ -1,26 +1,16 @@
 # Creating pages
 
-## The `action` function
+## Register the page route
 
-The first step is to add the new pages in `config/Autoload/local.php`.
-This means adding a `Route` for each page, as seen below.
+Open `config/autoload/local.php` and locate the **routes** key.
+Under the **page** key you will find an associative array with a couple of already existing routes.
+You create a new route by appending a new line to that array:
 
 ```php
-    $baseUrl = 'http://dk-light.localhost';
-
-    return [
-        'application' => [
-            'url' => $baseUrl,
-        ],
-        'routes'      => [
-            'page' => [
-                'about'            => 'about',
-                'who-we-are'       => 'who-we-are',
-                'example-template' => 'example-template',
-            ],
-        ],
-    ];
+'example-page' => 'example-template',
 ```
+
+> The array key is the page URI, the array value is the template name used by that page.
 
 In order to be displayed this new `example-template` can then be added to the `src/Page/templates/page/example-template.html.twig` in the following way as an example:
 

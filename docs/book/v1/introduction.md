@@ -1,6 +1,6 @@
 # Dotkernel light
 
-Dotkernel Light is an application (skeleton) using Mezzio microframework and Laminas components.
+Dotkernel Light is a PSR-15 implementing application (skeleton) using Mezzio microframework and Laminas components.
 It's designed as a minimal project to generate a simple website, like a presentation site.
 
 Read on to find out more about the application:
@@ -12,7 +12,7 @@ Read on to find out more about the application:
 > Check out our [demo](https://light.dotkernel.net/).
 
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/light)
-![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/light/1.0.0)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/light/1.1.0)
 
 [![GitHub issues](https://img.shields.io/github/issues/dotkernel/light)](https://github.com/dotkernel/light/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dotkernel/light)](https://github.com/dotkernel/light/network)
