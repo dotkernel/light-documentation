@@ -6,7 +6,7 @@ It is a good practice to standardize the file structure of projects.
 
 When using Dotkernel Light, the following structure is installed by default:
 
-![Dotkernel Light File Structure!](https://docs.dotkernel.org/img/light/file-structure-dk-dark.png)
+![Dotkernel Light File Structure!](https://docs.dotkernel.org/img/light/file-structure-dk-light.png)
 
 ## Special purpose folders
 
