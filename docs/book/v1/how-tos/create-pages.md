@@ -1,17 +1,24 @@
 # Creating pages
 
-## The `action` function
+## Register the page route
 
-The first step is to add the new pages in `src/Page/src/Controller/PageController.php`.
-This means adding an `Action` function for each page, as seen below.
+Open `config/autoload/local.php` and locate the **routes** key.
+Under the **page** key you will find an associative array with a couple of already existing routes.
+You create a new route by appending a new line to that array:
 
 ```php
-    public function examplePageAction(): ResponseInterface
-    {
-        return new HtmlResponse(
-            $this->template->render('page::example-template')
-        );
-    }
+'example-page' => 'example-template',
+```
+
+> The array key is the page slug, the array value is the template name used by that page.
+
+In order to be displayed this new `example-template` needs to be added to the website's navigation area.
+To do this, open `src/App/templates/layout/default.html.twig`, locate the `ul` inside the `div` with id `navbarHeader` and append the below code to it:
+
+```twig
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('page::example-template') }}">Example</a>
+    </li>
 ```
 
 ## The page content
@@ -77,6 +84,3 @@ public function getTemplates(): array
 ## Accessing the page
 
 The url for the new page in this example is `/page/example-page`.
-
-> Because of the way routing works, dot (.), dash (-), underscore (_) are filtered from the `action` parameter in the routing `/page[/{action}]`.
-> As a result, the `examplePageAction` function in called.
