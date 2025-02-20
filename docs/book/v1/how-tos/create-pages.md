@@ -10,9 +10,10 @@ You create a new route by appending a new line to that array:
 'example-page' => 'example-template',
 ```
 
-> The array key is the page URI, the array value is the template name used by that page.
+> The array key is the page slug, the array value is the template name used by that page.
 
-In order to be displayed this new `example-template` can then be added to the `src/Page/templates/page/example-template.html.twig` in the following way as an example:
+In order to be displayed this new `example-template` needs to be added to the website's navigation area.
+To do this, open `src/App/templates/layout/default.html.twig`, locate the `ul` inside the `div` with id `navbarHeader` and append the below code to it:
 
 ```twig
     <li class="nav-item">
@@ -83,6 +84,3 @@ public function getTemplates(): array
 ## Accessing the page
 
 The url for the new page in this example is `/page/example-page`.
-
-> Because of the way routing works, dot (.), dash (-), underscore (_) are filtered from the `action` parameter in the routing `/page[/{action}]`.
-> As a result, the `examplePageAction` function in called.
