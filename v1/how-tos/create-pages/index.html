@@ -291,12 +291,6 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../installation/configuration-files/" class="subnavigation__link">Configuration Files</a>
-</li>
-
-        
-        
-<li class="subnavigation__list-item ">
     <a href="../../installation/development-mode/" class="subnavigation__link">Development Mode</a>
 </li>
 
@@ -342,6 +336,12 @@
         
 <li class="subnavigation__list-item ">
     <a href="../npm-commands/" class="subnavigation__link">Use NPM Commands</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../routing/" class="subnavigation__link">Routing</a>
 </li>
 
         
@@ -398,7 +398,7 @@
             <ul class="toc__list">
             
                 <li class="toc__entry">
-                    <a href="#the-action-function" class="toc__link nav-link">The action function</a>
+                    <a href="#register-the-page-route" class="toc__link nav-link">Register the page route</a>
                 </li>
             
                 <li class="toc__entry">
@@ -428,15 +428,19 @@
     
 
     <h1 id="creating-pages">Creating pages</h1>
-<h2 id="the-action-function">The <code>action</code> function</h2>
-<p>The first step is to add the new pages in <code>src/Page/src/Controller/PageController.php</code>.
-This means adding an <code>Action</code> function for each page, as seen below.</p>
-<pre class="highlight"><code class="language-php">    public function examplePageAction(): ResponseInterface
-    {
-        return new HtmlResponse(
-            $this-&gt;template-&gt;render('page::example-template')
-        );
-    }</code></pre>
+<h2 id="register-the-page-route">Register the page route</h2>
+<p>Open <code>config/autoload/local.php</code> and locate the <strong>routes</strong> key.
+Under the <strong>page</strong> key you will find an associative array with a couple of already existing routes.
+You create a new route by appending a new line to that array:</p>
+<pre class="highlight"><code class="language-php">'example-page' =&gt; 'example-template',</code></pre>
+<blockquote>
+<p>The array key is the page slug, the array value is the template name used by that page.</p>
+</blockquote>
+<p>In order to be displayed this new <code>example-template</code> needs to be added to the website's navigation area.
+To do this, open <code>src/App/templates/layout/default.html.twig</code>, locate the <code>ul</code> inside the <code>div</code> with id <code>navbarHeader</code> and append the below code to it:</p>
+<pre class="highlight"><code class="language-twig">    &lt;li class="nav-item"&gt;
+        &lt;a class="nav-link" href="{{ url('page::example-template') }}"&gt;Example&lt;/a&gt;
+    &lt;/li&gt;</code></pre>
 <h2 id="the-page-content">The page content</h2>
 <p>Each page has its own template, so the next step is to create the template files in the <code>src/Page/templates/page/</code> folder.
 For the example above, the <code>src/Page/templates/page/example-template.html.twig</code> file was created.
@@ -486,10 +490,6 @@ This item is defined in <code>src/Page/src/ConfigProvider.php</code> in <code>ge
 }</code></pre>
 <h2 id="accessing-the-page">Accessing the page</h2>
 <p>The url for the new page in this example is <code>/page/example-page</code>.</p>
-<blockquote>
-<p>Because of the way routing works, dot (.), dash (-), underscore (_) are filtered from the <code>action</code> parameter in the routing <code>/page[/{action}]</code>.
-As a result, the <code>examplePageAction</code> function in called.</p>
-</blockquote>
 
 
 
@@ -499,9 +499,9 @@ As a result, the <code>examplePageAction</code> function in called.</p>
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../npm-commands/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../routing/">
                     <i class="bi bi-chevron-left"></i>
-                    Use NPM Commands
+                    Routing
                 </a>
             
         </li>
@@ -589,11 +589,7 @@ As a result, the <code>examplePageAction</code> function in called.</p>
                 </div>
             </div>
 
-            <div class="col-md-3 pt-3">
-                <div class="footer_head">
-                    <p>Support</p>
-                </div>
-
+            <div class="col-md-3 pt-3 mt-1">
                 <ul class="support__list row">
                     <li class="support__list-item col-lg-6 mb-md-3">
                         <a href="https://github.com/dotkernel" class="support__link" title="GitHub" target="_blank">

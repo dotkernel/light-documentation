@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="light">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/installation/configuration-files/">
+        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/how-tos/routing/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Configuration Files - light - DotKernel Documentation</title>
+        <title>Routing - light - DotKernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -158,12 +158,12 @@
                         
                             
                             
-                                <li class="breadcrumb-item">Installation</li>
+                                <li class="breadcrumb-item">How to</li>
                             
                         
                     
 
-                    <li class="breadcrumb-item active" aria-current="page">Configuration Files</li>
+                    <li class="breadcrumb-item active" aria-current="page">Routing</li>
                 
             
         </ol>
@@ -279,37 +279,31 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../getting-started/" class="subnavigation__link">Getting Started</a>
+    <a href="../../installation/getting-started/" class="subnavigation__link">Getting Started</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../composer/" class="subnavigation__link">Composer</a>
-</li>
-
-        
-        
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Configuration Files</a>
+    <a href="../../installation/composer/" class="subnavigation__link">Composer</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../development-mode/" class="subnavigation__link">Development Mode</a>
+    <a href="../../installation/development-mode/" class="subnavigation__link">Development Mode</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../running-the-application/" class="subnavigation__link">Running the Application</a>
+    <a href="../../installation/running-the-application/" class="subnavigation__link">Running the Application</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../faq/" class="subnavigation__link">FAQ</a>
+    <a href="../../installation/faq/" class="subnavigation__link">FAQ</a>
 </li>
 
         
@@ -341,37 +335,43 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../how-tos/npm-commands/" class="subnavigation__link">Use NPM Commands</a>
+    <a href="../npm-commands/" class="subnavigation__link">Use NPM Commands</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Routing</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../how-tos/create-pages/" class="subnavigation__link">Create Pages</a>
+    <a href="../create-pages/" class="subnavigation__link">Create Pages</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../how-tos/twitter-opengraph-cards/" class="subnavigation__link">Set Up Twitter and OpenGraph Cards</a>
+    <a href="../twitter-opengraph-cards/" class="subnavigation__link">Set Up Twitter and OpenGraph Cards</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../how-tos/edit-top-menu/" class="subnavigation__link">Edit the Top Menu</a>
+    <a href="../edit-top-menu/" class="subnavigation__link">Edit the Top Menu</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../how-tos/edit-footer/" class="subnavigation__link">Edit the Footer</a>
+    <a href="../edit-footer/" class="subnavigation__link">Edit the Footer</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../how-tos/manage-assets/" class="subnavigation__link">Manage Assets</a>
+    <a href="../manage-assets/" class="subnavigation__link">Manage Assets</a>
 </li>
 
         
@@ -393,6 +393,17 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#how-are-we-implementing-handlers" class="toc__link nav-link">How are we implementing handlers?</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -405,11 +416,37 @@
 
     
     
-<!--        <h2 class="chapter__headline text-black-50">Installation</h2>-->
+<!--        <h2 class="chapter__headline text-black-50">How to</h2>-->
     
 
-    <h1 id="configuration-files">Configuration Files</h1>
-<p>Duplicate <code>config/autoload/local.php.dist</code> as <code>config/autoload/local.php</code>.</p>
+    <h1 id="routing">Routing</h1>
+<p>In our current implementation we are using request handlers instead of controllers in order for DotKernel to comply with the PSR-15 standard.</p>
+<h2 id="how-are-we-implementing-handlers">How are we implementing handlers?</h2>
+<h3 id="declaration-of-the-routes-and-modules">Declaration of the routes and modules</h3>
+<p>Currently, our structure uses modules, routes and template names.
+Those are being declared in the file <code>config/autoload/local.php</code> in the following way:</p>
+<pre class="highlight"><code class="language-php">    'routes'      =&gt; [
+        'page' =&gt; [
+            'about'      =&gt; 'about',
+            'who-we-are' =&gt; 'who-we-are',
+        ],
+    ],</code></pre>
+<p>In this case <code>page</code> represents the module and <code>'about' =&gt; 'about'</code> represents the page slug and its assigned <code>.twig</code> template.
+To clarify, this creates a route called <code>page.about</code> in the <code>page</code> module, it loads the template file <code>src/Page/templates/page/about.html.twig</code> and can be accessed at <code>/page/about</code>.
+With each request, when matching one of these routes, the <code>PageHandler</code> will detect the current route name and render the matching template.</p>
+<h3 id="manipulating-the-declared-routes-and-modules">Manipulating the declared routes and modules</h3>
+<p>Each module has a <code>RoutesDelegator.php</code> file (ex. <code>src/Page/src/RoutesDelegator.php</code>).
+In this file we are retrieving the application config from the container and we loop over each module and their assigned routes.</p>
+<pre class="highlight"><code class="language-php">    $routes = $container-&gt;get('config')['routes'] ?? [];
+    foreach ($routes as $moduleName =&gt; $moduleRoutes) {
+        foreach ($moduleRoutes as $routeUri =&gt; $templateName) {
+            $app-&gt;get(
+                sprintf('/%s/%s', $moduleName, $routeUri),
+                [PageHandler::class],
+                sprintf('%s::%s', $moduleName, $templateName)
+            );
+        }
+    }</code></pre>
 
 
 
@@ -419,9 +456,9 @@
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../composer/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../npm-commands/">
                     <i class="bi bi-chevron-left"></i>
-                    Composer
+                    Use NPM Commands
                 </a>
             
         </li>
@@ -429,8 +466,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../development-mode/">
-                    Development Mode
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../create-pages/">
+                    Create Pages
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
@@ -509,11 +546,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 pt-3">
-                <div class="footer_head">
-                    <p>Support</p>
-                </div>
-
+            <div class="col-md-3 pt-3 mt-1">
                 <ul class="support__list row">
                     <li class="support__list-item col-lg-6 mb-md-3">
                         <a href="https://github.com/dotkernel" class="support__link" title="GitHub" target="_blank">
