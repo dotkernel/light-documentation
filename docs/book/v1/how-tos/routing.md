@@ -24,7 +24,7 @@ With each request, when matching one of these routes, the `PageHandler` will det
 
 ### Manipulating the declared routes and modules
 
-Each module has a `RoutesDelegator.php` file (ex. `src/Page/src/RoutesDelegator.php`). 
+Each module has a `RoutesDelegator.php` file (ex. `src/Page/src/RoutesDelegator.php`).
 In this file we are retrieving the application config from the container and we loop over each module and their assigned routes.
 
 ```php
