@@ -15,14 +15,13 @@ For production, we highly recommend a *nix based system.
 
 You need to convert the provided Apache related `.htaccess` file into Nginx configuration instructions.
 
-## PHP >= 8.2
+## PHP: 8.2, 8.3 or 8.4
 
 Both mod_php and FCGI (FPM) are supported.
 
 ## Required Settings and Modules & Extensions
 
 * memory_limit >= 128M
-* upload_max_filesize and post_max_size >= 100M (depending on your data)
 * mbstring
 * Composer (added to $PATH)
 
