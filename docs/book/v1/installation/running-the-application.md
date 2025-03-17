@@ -6,6 +6,18 @@ We recommend running your applications in WSL:
 - currently we provide a distro implementations for [AlmaLinux9](https://github.com/dotkernel/development/blob/main/wsl/os/almalinux9/README.md)
 - install the application in a virtualhost as recommended by the chosen distro
 - set `$baseUrl` in **config/autoload/local.php** to the address of the virtualhost
+- set the permissions for the data folder
+
+```shell
+chmod -R 777 data
+```
+
+- set the permissions for the log folder
+
+```shell
+chmod -R 777 log
+```
+
 - run the application by opening the virtualhost address in your browser
 
 You should see the `Dotkernel Light` welcome page.
