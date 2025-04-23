@@ -20,7 +20,7 @@ nav:
           - "Running the Application": v1/installation/running-the-application.md
           - "FAQ": v1/installation/faq.md
       - How to:
-          - "Use NPM Commands": v1/how-tos/npm-commands.md
+          - "Bundle Static Modules": v1/how-tos/bundle-static-modules.md
           - "Routing": v1/how-tos/routing.md
           - "Create Pages": v1/how-tos/create-pages.md
           - "Set Up Twitter and OpenGraph Cards": v1/how-tos/twitter-opengraph-cards.md
