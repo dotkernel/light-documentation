@@ -27,4 +27,5 @@ To review the project via Vite, you can use this command that starts the PHP ser
 ```shell
 npm run preview
 ```
+
 The above command executes `php -S 0.0.0.0:8080 -t public`, with the added benefit that it refreshes the page whenever a recompilation is completed.
