@@ -12,6 +12,7 @@ First you need to install dependencies into the `node_modules` directory by runn
 ```shell
 npm install
 ```
+
 If everything ran ok, you should see a new root folder named `node_modules` where all the npm packages are installed.
 If `npm install` fails, this could be caused by user permissions for npm.
 Our recommendation is to install npm through `Node Version Manager`.
@@ -29,10 +30,10 @@ Initially, Vite is configured to delete and rebuild the contents of these folder
 - images
 - js
 
-The folders are populated from their counterparts in `src/App/assets`. 
+The folders are populated from their counterparts in `src/App/assets`.
 
 > Make sure to not edit anything inside the four public folders manually.
-> Other folders and the three initial files in the public folder will be left as is. 
+> Other folders and the three initial files in the public folder will be left as is.
 
 To review the project via Vite, you can use this command that starts the PHP server on port 8080:
 
