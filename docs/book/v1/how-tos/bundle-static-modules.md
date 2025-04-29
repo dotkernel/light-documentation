@@ -25,7 +25,7 @@ The build command compiles the components then monitors the source files and tri
 npm run build
 ```  
 
-Initially, Vite is configured to delete and rebuild the contents of these folders from the `public` folder':
+Initially, Vite is configured to delete and rebuild the contents of these folders from the `public` folder:
 
 - css
 - fonts
