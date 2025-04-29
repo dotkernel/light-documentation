@@ -19,10 +19,10 @@ If everything ran ok, you should see a new root folder named `node_modules` wher
 If `npm install` fails, this could be caused by user permissions for npm.
 Our recommendation is to install npm through `Node Version Manager`.
 
-The build command compiles the components then monitors the source files and triggers their recompilation when one of them is changed:
+The `watch` command compiles the components then monitors the source files and triggers their recompilation when one of them is changed:
 
 ```shell
-npm run build
+npm run watch
 ```  
 
 Initially, Vite is configured to delete and rebuild the contents of these folders from the `public` folder:
@@ -36,3 +36,9 @@ The folders are populated from their counterparts in `src/App/assets`.
 
 > Make sure to not edit anything inside the four public folders manually.
 > Other files and folders in the public folder will be left as is.
+
+An alternative to the `watch` command is `build` which simply compiles the components, overwriting as needed:
+
+```shell
+npm run build
+```
