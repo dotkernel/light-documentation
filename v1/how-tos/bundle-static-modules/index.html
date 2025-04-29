@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="light">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/how-tos/npm-commands/">
+        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/how-tos/bundle-static-modules/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Use NPM Commands - light - Dotkernel Documentation</title>
+        <title>Bundle Static Modules - light - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -163,7 +163,7 @@
                         
                     
 
-                    <li class="breadcrumb-item active" aria-current="page">Use NPM Commands</li>
+                    <li class="breadcrumb-item active" aria-current="page">Bundle Static Modules</li>
                 
             
         </ol>
@@ -335,7 +335,7 @@
         
         
 <li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Use NPM Commands</a>
+    <a href="./" class="subnavigation__link">Bundle Static Modules</a>
 </li>
 
         
@@ -408,15 +408,38 @@
 <!--        <h2 class="chapter__headline text-black-50">How to</h2>-->
     
 
-    <h1 id="npm-commands">NPM Commands</h1>
-<p>To install dependencies into the <code>node_modules</code> directory run this command.</p>
+    <h1 id="bundle-static-modules">Bundle Static Modules</h1>
+<blockquote>
+<p>Prerequisite software: Node.js v20 (minimum supported version)</p>
+</blockquote>
+<p><a href="https://vite.dev/">Vite</a> is a frontend dev tool we use:</p>
+<ul>
+<li>To avoid network bottlenecks that can occur when your application has a lot of separate scripts and style sheets.</li>
+<li>To concatenate and compress (uglify) <code>.css</code> and <code>.js</code> files</li>
+<li>To preprocess <code>.scss</code> files into <code>.css</code>.</li>
+<li>To copy the <code>fonts</code> and <code>images</code> used in your project, from the <code>assets</code> folder to the <code>public</code> folder.</li>
+</ul>
+<p>First you need to install dependencies into the <code>node_modules</code> directory by running this command:</p>
 <pre class="highlight"><code class="language-shell">npm install</code></pre>
-<p>If <code>npm install</code> fails, this could be caused by user permissions of npm.
-Recommendation is to install npm through <code>Node Version Manager</code>.</p>
-<p>The watch command compiles the components then watches the files and recompiles when one of them changes:</p>
+<p>If everything ran ok, you should see a new root folder named <code>node_modules</code> where all the npm packages are installed.
+If <code>npm install</code> fails, this could be caused by user permissions for npm.
+Our recommendation is to install npm through <code>Node Version Manager</code>.</p>
+<p>The <code>watch</code> command compiles the components then monitors the source files and triggers their recompilation when one of them is changed:</p>
 <pre class="highlight"><code class="language-shell">npm run watch</code></pre>
-<p>When you are done making changes to your code, this command compiles the assets locally, minifies them and makes them ready for production:</p>
-<pre class="highlight"><code class="language-shell">npm run prod</code></pre>
+<p>Initially, Vite is configured to delete and rebuild the contents of these folders from the <code>public</code> folder:</p>
+<ul>
+<li>css</li>
+<li>fonts</li>
+<li>images</li>
+<li>js</li>
+</ul>
+<p>The folders are populated from their counterparts in <code>src/App/assets</code>.</p>
+<blockquote>
+<p>Make sure to not edit anything inside the four public folders manually.
+Other files and folders in the public folder will be left as is.</p>
+</blockquote>
+<p>An alternative to the <code>watch</code> command is <code>build</code> which simply compiles the components, overwriting as needed:</p>
+<pre class="highlight"><code class="language-shell">npm run build</code></pre>
 
 
 
