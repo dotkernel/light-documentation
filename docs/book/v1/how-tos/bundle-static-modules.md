@@ -1,5 +1,7 @@
 # Bundle Static Modules
 
+> Prerequisite software: Node.js v20 (minimum supported version)
+
 [Vite](https://vite.dev/) is a frontend dev tool we use:
 
 - To avoid network bottlenecks that can occur when your application has a lot of separate scripts and style sheets.
