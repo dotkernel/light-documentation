@@ -298,7 +298,7 @@ php bin/doctrine
 
 Example (truncated) output:
 
-```
+```terminaloutput
 Doctrine Command Line Interface 3.5.7.0
 
 Options:
