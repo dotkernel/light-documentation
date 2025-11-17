@@ -43,7 +43,7 @@ It simplifies wiring Doctrine EntityManager, DBAL, configuration, and related se
 An extension for PHPStan that improves static analysis for Doctrine.
 It understands entity metadata, repositories, and common Doctrine patterns, helping catch errors during development.
 
-# Setting Up Doctrine
+## Setting Up Doctrine
 
 After successfully installing our dependencies we now need to configure our Doctrine instance.
 
@@ -252,7 +252,7 @@ return DependencyFactory::fromEntityManager(
 );
 ```
 
-# Running doctrine
+## Running doctrine
 
 Now that everything has been configured we only need to do one last thing, to create an executable for the Doctrine CLI.
 In our case we will create it as `/bin/doctrine`
