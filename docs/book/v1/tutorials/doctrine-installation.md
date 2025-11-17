@@ -277,7 +277,7 @@ $entityManager->getEventManager();
 ConsoleRunner::run(new SingleManagerProvider($entityManager));
 ```
 
-(Optional) To keep things tidy I recommend to make an executable for the migrations of Doctrine as well for example `/bin/doctrine-migrations`:
+(Optional) To keep things tidy we recommend to make an executable for the migrations of Doctrine as well for example `/bin/doctrine-migrations`:
 
 ```php
 #!/usr/bin/env php
