@@ -28,6 +28,8 @@ nav:
           - "Edit the Top Menu": v1/how-tos/edit-top-menu.md
           - "Edit the Footer": v1/how-tos/edit-footer.md
           - "Manage Assets": v1/how-tos/manage-assets.md
+      - Tutorials:
+          - "Installing Doctrine": v1/tutorials/doctrine-installation.md
 site_name: light
 site_description: "Dotkernel Light"
 repo_url: "https://github.com/dotkernel/light"
