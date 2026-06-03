@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="light">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/installation/running-the-application/">
+        <link rel="canonical" href="https://docs.dotkernel.org/light-documentation/v1/introduction/request-lifecycle/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Running the Application - light - Dotkernel Documentation</title>
+        <title>Request Lifecycle - light - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -172,12 +172,12 @@
                         
                             
                             
-                                <li class="breadcrumb-item">Installation</li>
+                                <li class="breadcrumb-item">Overview</li>
                             
                         
                     
 
-                    <li class="breadcrumb-item active" aria-current="page">Running the Application</li>
+                    <li class="breadcrumb-item active" aria-current="page">Request Lifecycle</li>
                 
             
         </ol>
@@ -205,7 +205,7 @@
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../../introduction/" class="subnavigation__link">Introduction</a>
+    <a href="../" class="subnavigation__link">Introduction</a>
 </li>
 
                     
@@ -236,26 +236,26 @@
     <ul class="subnavigation__list collapse" id="overview">
         
         
-<li class="subnavigation__list-item ">
-    <a href="../../introduction/request-lifecycle/" class="subnavigation__link">Request Lifecycle</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Request Lifecycle</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../introduction/server-requirements/" class="subnavigation__link">Server Requirements</a>
+    <a href="../server-requirements/" class="subnavigation__link">Server Requirements</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../introduction/file-structure/" class="subnavigation__link">File Structure</a>
+    <a href="../file-structure/" class="subnavigation__link">File Structure</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../../introduction/packages/" class="subnavigation__link">Packages</a>
+    <a href="../packages/" class="subnavigation__link">Packages</a>
 </li>
 
         
@@ -299,31 +299,31 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../getting-started/" class="subnavigation__link">Getting Started</a>
+    <a href="../../installation/getting-started/" class="subnavigation__link">Getting Started</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../composer/" class="subnavigation__link">Composer</a>
+    <a href="../../installation/composer/" class="subnavigation__link">Composer</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../development-mode/" class="subnavigation__link">Development Mode</a>
-</li>
-
-        
-        
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Running the Application</a>
+    <a href="../../installation/development-mode/" class="subnavigation__link">Development Mode</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../faq/" class="subnavigation__link">FAQ</a>
+    <a href="../../installation/running-the-application/" class="subnavigation__link">Running the Application</a>
+</li>
+
+        
+        
+<li class="subnavigation__list-item ">
+    <a href="../../installation/faq/" class="subnavigation__link">FAQ</a>
 </li>
 
         
@@ -413,6 +413,17 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#request-lifecycle-step-by-step" class="toc__link nav-link">Request Lifecycle Step-by-Step</a>
+                </li>
+            
+            </ul>
+        </div>
+    
 
                     
                 </div>
@@ -425,37 +436,154 @@
 
     
     
-<!--        <h2 class="chapter__headline text-black-50">Installation</h2>-->
+<!--        <h2 class="chapter__headline text-black-50">Overview</h2>-->
     
 
-    <h1 id="running-the-application">Running the application</h1>
-<p>We recommend running the application on <strong>AlmaLinux 10</strong>, using <strong>WSL 2</strong>:</p>
+    <h1 id="request-lifecycle-for-a-mezzio-based-application">Request Lifecycle for a Mezzio-Based Application</h1>
+<p>The request lifecycle is the sequence of steps that happen from the moment a user makes an HTTP request until the server sends back a response.</p>
+<p>The graph below shows how the request is handled by Dotkernel Light.</p>
+<p><img alt="Dotkernel Light Request Lifecycle!" src="https://docs.dotkernel.org/img/light/request-lifecycle.jpg" class="img-responsive"/></p>
+<h2 id="request-lifecycle-step-by-step">Request Lifecycle Step-by-Step</h2>
+<p>The following list describes what each of the steps from the graph does in Dotkernel Light.</p>
+<h3 id="1-http-request-publicindexphp">1. HTTP Request [public/index.php]</h3>
 <ul>
-<li>if you don't already have:<ul>
-<li>install <a href="https://docs.dotkernel.org/development/v2/setup/system-requirements/">WSL 2</a></li>
-<li>install <a href="https://docs.dotkernel.org/development/v2/setup/installation/">AlmaLinux 10</a></li>
+<li>Bootstrap the application.</li>
+<li>Load configuration.</li>
+<li>Create the Mezzio application instance.</li>
 </ul>
-</li>
-<li>install the application in a virtualhost as recommended by the chosen distro</li>
-<li>set <code>$baseUrl</code> in <strong>config/autoload/local.php</strong> to the address of the virtualhost</li>
-<li>set the permissions for the <code>data</code> folder</li>
-</ul>
-<pre class="highlight"><code class="language-shell">chmod -R 777 ./data</code></pre>
+<h3 id="2-service-container">2. Service Container</h3>
+<p>Register:</p>
 <ul>
-<li>set the permissions for the log folder</li>
+<li>Factories.</li>
+<li>Aliases.</li>
+<li>Delegators.</li>
 </ul>
-<pre class="highlight"><code class="language-shell">chmod -R 777 ./log</code></pre>
-<ul>
-<li>run the application by opening the virtualhost address in your browser</li>
-</ul>
-<p>You should see the <code>Dotkernel Light</code> welcome page.</p>
-<blockquote>
-<p>If you are getting exceptions or errors regarding some missing services, try running the following command:</p>
-</blockquote>
-<pre class="highlight"><code class="language-shell">sudo php ./bin/clear-config-cache.php</code></pre>
-<blockquote>
-<p>If <code>data/cache/config-cache.php</code> is present, that config will be loaded regardless of the <code>ConfigAggregator::ENABLE_CACHE</code> configuration in <code>config/autoload/mezzio.global.php</code></p>
-</blockquote>
+<p>All services are configured and ready to use.</p>
+<h3 id="3-route-registration">3. Route Registration</h3>
+<p>Read all available routes with their allowed request methods and dynamically register them in the application.
+Routes are managed by FastRoute.</p>
+<h4 id="example">Example</h4>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Match</td>
+<td>/page/about -&gt; GetPageViewHandler</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>Route name</td>
+<td>page::about</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-middleware-pipeline-configpipelinephp">4. Middleware Pipeline [config/pipeline.php]</h3>
+<p>Loads the predefined order of middleware.
+It defines how incoming HTTP requests move through the application and how responses are generated.</p>
+<h3 id="5-routing">5. Routing</h3>
+<p>FastRoute matches the URL and method against registered routes.</p>
+<h4 id="example_1">Example</h4>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Match</td>
+<td>GET /page/about</td>
+</tr>
+<tr>
+<td>Handler</td>
+<td>GetPageViewHandler</td>
+</tr>
+<tr>
+<td>Route name</td>
+<td>page::about</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-handler-invocation">6. Handler Invocation</h3>
+<p>Extract the matched route name from the request and pass it to the renderer.</p>
+<pre class="highlight"><code class="language-php">$template = $request-&gt;getAttribute(RouteResult::class)-&gt;getMatchedRouteName();
+// $template = 'page::about';</code></pre>
+<h3 id="7-custom-logic-execution-in-handler">7. Custom Logic Execution in Handler</h3>
+<p>Execute the business logic in the handler.
+The process can involve services and any custom logic.</p>
+<h3 id="8-template-rendering">8. Template Rendering</h3>
+<p>Twig loads the template, applies layout, renders blocks and includes partials.</p>
+<h4 id="example_2">Example</h4>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Load</td>
+<td>src/Page/templates/page/about.html.twig</td>
+</tr>
+<tr>
+<td>Extends</td>
+<td>@layout/default.html.twig</td>
+</tr>
+<tr>
+<td>Render blocks</td>
+<td>title, content</td>
+</tr>
+<tr>
+<td>Include partials</td>
+<td>alerts.html.twig, etc.</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Final HTML</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="9-response-creation">9. Response Creation</h3>
+<p>An HtmlResponse is created with status, headers and the rendered HTML body.</p>
+<h4 id="example_3">Example</h4>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status</td>
+<td>200 OK</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>text/html; charset=utf-8</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>Rendered HTML</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="10-response-pipeline">10. Response Pipeline</h3>
+<p>The response flows back through the middleware stack.
+Middleware can modify headers, cookies, compress content, etc.</p>
+<h3 id="11-response-emitter">11. Response Emitter</h3>
+<p>The final response is sent back to the browser.
+The page is rendered and sent to the user.</p>
 
 
 
@@ -465,9 +593,9 @@
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../development-mode/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../">
                     <i class="bi bi-chevron-left"></i>
-                    Development Mode
+                    Introduction
                 </a>
             
         </li>
@@ -475,8 +603,8 @@
         
         <li class="col text-nowrap text-md-end pe-0">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../faq/">
-                    FAQ
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../server-requirements/">
+                    Server Requirements
                     <i class="bi bi-chevron-right"></i>
                 </a>
             
