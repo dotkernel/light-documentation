@@ -10,6 +10,7 @@ nav:
   - v1:
       - Introduction: v1/introduction.md
       - Overview:
+          - "Request Lifecycle": v1/introduction/request-lifecycle.md
           - "Server Requirements": v1/introduction/server-requirements.md
           - "File Structure": v1/introduction/file-structure.md
           - "Packages": v1/introduction/packages.md
