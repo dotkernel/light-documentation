@@ -15,9 +15,12 @@ For production, we highly recommend a *nix based system.
 
 You need to convert the provided Apache related `.htaccess` file into Nginx configuration instructions.
 
-## PHP: 8.2, 8.3 or 8.4
+## PHP: 8.3, 8.4 or 8.5
 
 Both mod_php and FCGI (FPM) are supported.
+
+> These are the versions declared by `composer.json` in Dotkernel Light 1.5.0.
+> PHP 8.5 was added in release 1.4.0 and PHP 8.2 was dropped in release 1.5.0, so stay on 1.4.x if you are pinned to PHP 8.2.
 
 ## Required Settings and Modules & Extensions
 
