@@ -11,12 +11,12 @@ You can use the below as an example.
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pageDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grouped Pages</a>
         <div class="dropdown-menu" aria-labelledby="pageDropdown">
-          <a class="dropdown-item" href="{{ url('page', {action: 'home'}) }}">Home</a>
+          <a class="dropdown-item" href="{{ url('app::index') }}">Home</a>
           <a class="dropdown-item" href="https://www.example.com/docs">Docs</a>
         </div>
       </li>
       <li class="nav-item">
-          <a class="nav-link" target="_blank" href="{{ url('page', {action: 'firstLink'}) }}">First Link</a>
+          <a class="nav-link" target="_blank" href="{{ url('page::about') }}">First Link</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" target="_blank" href="https://second.example.com/">Second Link</a>
@@ -26,6 +26,9 @@ You can use the below as an example.
 ```
 
 Each `li` element is listed as an item in the top menu.
+
+Internal links are generated with the `url()` helper, which takes a route name and returns an absolute URL.
+Route names follow the `{prefix}::{template}` pattern described in [Routing](routing.md), so the pages shipped with Light are reachable as `page::about` and `page::who-we-are`, and the homepage as `app::index`.
 
 There are two different types of elements in the example:
 
