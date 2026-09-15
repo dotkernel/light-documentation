@@ -459,12 +459,12 @@ To edit it, go to <code>src/App/templates/layout/default.html.twig</code> and up
       &lt;li class="nav-item dropdown"&gt;
         &lt;a class="nav-link dropdown-toggle" href="#" id="pageDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"&gt;Grouped Pages&lt;/a&gt;
         &lt;div class="dropdown-menu" aria-labelledby="pageDropdown"&gt;
-          &lt;a class="dropdown-item" href="{{ url('page', {action: 'home'}) }}"&gt;Home&lt;/a&gt;
+          &lt;a class="dropdown-item" href="{{ url('app::index') }}"&gt;Home&lt;/a&gt;
           &lt;a class="dropdown-item" href="https://www.example.com/docs"&gt;Docs&lt;/a&gt;
         &lt;/div&gt;
       &lt;/li&gt;
       &lt;li class="nav-item"&gt;
-          &lt;a class="nav-link" target="_blank" href="{{ url('page', {action: 'firstLink'}) }}"&gt;First Link&lt;/a&gt;
+          &lt;a class="nav-link" target="_blank" href="{{ url('page::about') }}"&gt;First Link&lt;/a&gt;
       &lt;/li&gt;
       &lt;li class="nav-item"&gt;
           &lt;a class="nav-link" target="_blank" href="https://second.example.com/"&gt;Second Link&lt;/a&gt;
@@ -472,6 +472,8 @@ To edit it, go to <code>src/App/templates/layout/default.html.twig</code> and up
     &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
 <p>Each <code>li</code> element is listed as an item in the top menu.</p>
+<p>Internal links are generated with the <code>url()</code> helper, which takes a route name and returns an absolute URL.
+Route names follow the <code>{prefix}::{template}</code> pattern described in <a href="../routing/">Routing</a>, so the pages shipped with Light are reachable as <code>page::about</code> and <code>page::who-we-are</code>, and the homepage as <code>app::index</code>.</p>
 <p>There are two different types of elements in the example:</p>
 <ul>
 <li>The <code>Grouped Pages</code> group several urls.

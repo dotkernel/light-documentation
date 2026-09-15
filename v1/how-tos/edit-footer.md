@@ -66,7 +66,7 @@ It also contains the copyright row.
 
         <div class="row">
             <p class="footer-headline">
-                © {{ 'now' | date('Y') }} by <a href="{{ url('home') }}">My Project</a>
+                © {{ 'now' | date('Y') }} by <a href="{{ url('app::index') }}">My Project</a>
             </p>
         </div>
     </div>

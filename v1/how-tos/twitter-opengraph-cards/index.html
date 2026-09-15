@@ -458,22 +458,23 @@
 &lt;meta name="twitter:site" content="@example"&gt;
 &lt;meta name="twitter:title" content="Page title"&gt;
 &lt;meta name="twitter:description" content="Basic description"&gt;
-&lt;meta name="twitter:image" content="{{ url('home') }}images/app/My-image.png"&gt;
+&lt;meta name="twitter:image" content="{{ absolute_url(asset('images/app/My-image.png')) }}"&gt;
 &lt;meta name="twitter:image:alt" content="Image alt"&gt;
 
 &lt;!-- OpenGraph card --&gt;
 &lt;meta property="og:title" content="Page title"/&gt;
 &lt;meta property="og:type" content="website"/&gt;
-&lt;meta property="og:url" content="{{ url('home') }}"/&gt;
-&lt;meta property="og:image" content="{{ url('home') }}images/app/My-image.png"/&gt;
+&lt;meta property="og:url" content="{{ url('app::index') }}"/&gt;
+&lt;meta property="og:image" content="{{ absolute_url(asset('images/app/My-image.png')) }}"/&gt;
 &lt;meta property="og:description" content="Basic description"/&gt;</code></pre>
 <p>In the example:</p>
 <ul>
-<li>{{ url('home') }} is the URL for the homepage, but you can also use this code to generate the url for other pages, just like in the canonical URL <code>{% block canonical %}{{ url(routeName ?? null) }}{% endblock %}</code>.<ul>
+<li><code>{{ url('app::index') }}</code> is the absolute URL of the homepage, and <code>url()</code> returns an absolute URL for any route name, which is what cards require — you can point a card at another page the same way, just like the canonical URL does in <code>{% block canonical %}{{ url(routeName ?? null) }}{% endblock %}</code>.<ul>
 <li>The <code>block</code> item is present to mitigate for not-found pages, e.g. when the url is typed incorrectly.</li>
 </ul>
 </li>
-<li>The image from <code>{{ url('home') }}images/app/My-image.png</code> is found in <code>public/images/app/PHP-REST-API.png</code>, but it is copied there by the <code>npm</code> script from <code>src/App/assets/images/PHP-REST-API.png</code>.</li>
+<li>Card images must be absolute URLs too, but <code>asset()</code> on its own returns a path, so it is wrapped in <code>absolute_url()</code>.
+The image from <code>{{ absolute_url(asset('images/app/My-image.png')) }}</code> is found in <code>public/images/app/PHP-REST-API.png</code>, but it is copied there by the <code>npm</code> script from <code>src/App/assets/images/PHP-REST-API.png</code>.</li>
 </ul>
 
 
