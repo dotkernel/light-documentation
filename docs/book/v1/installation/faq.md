@@ -10,10 +10,11 @@ If running your project you encounter some permission issues, follow the below s
 
 > PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/_example.local_/html/data/cache" is not writable...
 
-**Fix:**
+**Fix:** give the web-server user write access through the group, rather than opening the folder to everyone.
 
 ```shell
-chmod -R 777 data
+sudo chown -R "$USER":www-data data
+sudo chmod -R 775 data
 ```
 
 ### Error
@@ -23,5 +24,11 @@ chmod -R 777 data
 **Fix:**
 
 ```shell
-chmod -R 777 log
+sudo chown -R "$USER":www-data log
+sudo chmod -R 775 log
 ```
+
+> Replace `www-data` with the user your web server runs as if it differs — it is `apache` on AlmaLinux and RHEL derivatives, and `nginx` where nginx runs the worker processes.
+
+> `chmod -R 777` is sometimes suggested for these folders.
+> Avoid it outside a throwaway local VM: it lets anything on the machine rewrite the Twig and config caches, and those are executable PHP.
