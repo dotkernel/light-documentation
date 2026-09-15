@@ -21,13 +21,12 @@ nav:
           - "Running the Application": v1/installation/running-the-application.md
           - "FAQ": v1/installation/faq.md
       - How to:
-          - "Bundle Static Modules": v1/how-tos/bundle-static-modules.md
           - "Routing": v1/how-tos/routing.md
           - "Create Pages": v1/how-tos/create-pages.md
           - "Set Up Twitter and OpenGraph Cards": v1/how-tos/twitter-opengraph-cards.md
           - "Edit the Top Menu": v1/how-tos/edit-top-menu.md
           - "Edit the Footer": v1/how-tos/edit-footer.md
-          - "Manage Assets": v1/how-tos/manage-assets.md
+          - "Assets and the Vite build": v1/how-tos/manage-assets.md
 site_name: light
 site_description: "Dotkernel Light"
 repo_url: "https://github.com/dotkernel/light"
