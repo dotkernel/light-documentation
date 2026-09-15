@@ -463,21 +463,24 @@ Those are being declared in the file <code>config/autoload/local.php</code> in t
         ],
     ],</code></pre>
 <p>In this case <code>page</code> represents the module and <code>'about' =&gt; 'about'</code> represents the page slug and its assigned <code>.twig</code> template.
-To clarify, this creates a route called <code>page.about</code> in the <code>page</code> module, it loads the template file <code>src/Page/templates/page/about.html.twig</code> and can be accessed at <code>/page/about</code>.
-With each request, when matching one of these routes, the <code>PageHandler</code> will detect the current route name and render the matching template.</p>
+To clarify, this creates a route called <code>page::about</code> in the <code>page</code> module, it loads the template file <code>src/Page/templates/page/about.html.twig</code> and can be accessed at <code>/page/about</code>.
+The separator between the prefix and the template name is a double colon, so <code>url('page::about')</code> resolves, while <code>url('page.about')</code> throws.
+With each request, when matching one of these routes, the <code>GetPageViewHandler</code> will detect the current route name and render the matching template.</p>
 <h3 id="manipulating-the-declared-routes-and-modules">Manipulating the declared routes and modules</h3>
-<p>Each module has a <code>RoutesDelegator.php</code> file (ex. <code>src/Page/src/RoutesDelegator.php</code>).
-In this file we are retrieving the application config from the container and we loop over each module and their assigned routes.</p>
+<p>Each module registers its routes in a <code>RoutesDelegator.php</code> file, and the two modules do this differently.
+<code>src/Page/src/RoutesDelegator.php</code> retrieves the application config from the container and loops over each prefix and its assigned routes:</p>
 <pre class="highlight"><code class="language-php">    $routes = $container-&gt;get('config')['routes'] ?? [];
-    foreach ($routes as $moduleName =&gt; $moduleRoutes) {
+    foreach ($routes as $prefix =&gt; $moduleRoutes) {
         foreach ($moduleRoutes as $routeUri =&gt; $templateName) {
             $app-&gt;get(
-                sprintf('/%s/%s', $moduleName, $routeUri),
-                [PageHandler::class],
-                sprintf('%s::%s', $moduleName, $templateName)
+                sprintf('/%s/%s', $prefix, $routeUri),
+                GetPageViewHandler::class,
+                sprintf('%s::%s', $prefix, $templateName)
             );
         }
     }</code></pre>
+<p><code>src/App/src/RoutesDelegator.php</code> declares no config-driven routes at all — it registers a single static route for the home page:</p>
+<pre class="highlight"><code class="language-php">    $app-&gt;get('/', [GetIndexViewHandler::class], 'app::index');</code></pre>
 
 
 
