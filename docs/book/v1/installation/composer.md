@@ -14,21 +14,14 @@ Run this command in the command prompt.
 composer install
 ```
 
-You should see this text below, along with a long list of packages to be installed instead of the `[...]`.
-In this example there are 109 packages, though the number can change in future updates.
-You will find the packages in the `vendor` folder.
+Composer resolves the dependency tree, writes a lock file and installs the packages into the `vendor` folder.
+The run starts with a notice like this one:
 
 ```shell
 No composer.lock file present. Updating dependencies to latest instead of installing from lock file. See https://getcomposer.org/install for more information.
-Loading composer repositories with package information
-Updating dependencies
-Lock file operations: 109 installs, 0 updates, 0 removals
-[...]
-Writing lock file
-Installing dependencies from lock file (including require-dev)
-Package operations: 109 installs, 0 updates, 0 removals
-[...]
 ```
+
+The exact package count depends on the release you are installing, so do not be concerned if the number on your terminal differs from anyone else's.
 
 The setup script may prompt for some configuration settings, for example the lines below.
 If you don't see them, you can skip to the next section.
