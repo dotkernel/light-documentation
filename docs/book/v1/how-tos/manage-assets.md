@@ -1,45 +1,80 @@
-# Manage Assets
+# Assets and the Vite build
 
-If you haven't already done so, make sure `npm` is installed.
-You can keep it running during your updates with `npm run watch` or run this command after the edits are completed `npm run build`.
+Assets are the static files used by your content: images, fonts, JavaScript and SCSS.
+[Vite](https://vite.dev/) compiles and copies them from `src/App/assets` into the `public` folder, which is the only folder the web server serves.
 
-## What are assets?
+> Prerequisite software: Node.js.
+> `package.json` declares `"engines": { "node": "^20.19.0 || >=22.12.0" }`, so you need Node 20.19 or later on the 20.x line, or Node 22.12 or later.
+> Earlier 20.x releases satisfy "Node 20" and still fail the install.
 
-Assets are various files used by your content:
+We use Vite:
 
-- Images,
-- Fonts,
-- JavaScript codes,
-- SCSS.
+- To avoid network bottlenecks that can occur when your application has a lot of separate scripts and style sheets.
+- To concatenate and compress (uglify) `.css` and `.js` files.
+- To preprocess `.scss` files into `.css`.
+- To copy the `fonts` and `images` used in your project, from the `assets` folder to the `public` folder.
 
-## Assets source and destination
+## Install the dependencies
 
-The source of these files is the `src/App/assets/` folder:
+First install the dependencies into the `node_modules` directory:
 
-- src/App/assets/images
-- src/App/assets/fonts
-- src/App/assets/js
-- src/App/assets/scss
+```shell
+npm install
+```
 
-The `npm` script processes these files and copies or builds files under the `public` folder.
+If everything ran ok, you should see a new root folder named `node_modules` where all the npm packages are installed.
+If `npm install` fails, this could be caused by user permissions for npm.
+Our recommendation is to install npm through `Node Version Manager`.
 
-> You should not manage the items from the above folders manually.
-> The `npm` script will delete/replace the files when run.
+## Build the assets
 
-While the `images` and `fonts` folders are copied as is, the `js` and `scss` are minimized:
+The `build` command compiles the components, overwriting as needed:
 
-- `scss` files are minimized under `public/css/app.css`.
-- `js` files are minimized under `public/js/app.js`.
+```shell
+npm run build
+```
 
-The above items are by default used in the `src/App/templates/layout/default.html.twig` file.
+The `watch` command compiles the components, then monitors the source files and triggers their recompilation when one of them is changed:
+
+```shell
+npm run watch
+```
+
+## Source and destination
+
+The source of these files is the `src/App/assets/` folder.
+The destinations are not symmetrical — the `js` and `scss` trees are bundled into a single file each, and `images` lands in a subfolder of `public/images`:
+
+| Source | Destination | What happens |
+| --- | --- | --- |
+| `src/App/assets/scss` | `public/css/app.css` | compiled from SCSS and minified into one file |
+| `src/App/assets/js` | `public/js/app.js` | bundled and minified into one file |
+| `src/App/assets/fonts` | `public/fonts/` | copied as is |
+| `src/App/assets/images` | `public/images/app/` | copied as is |
+
+The `images/app/` destination is the one that catches people out: a file at `src/App/assets/images/logo.png` is served from `public/images/app/logo.png`, not `public/images/logo.png`.
+
+Reference the built files in your templates with `asset()`:
 
 ```twig
 <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
-...
 <script src="{{ asset('js/app.js') }}"></script>
+<img src="{{ asset('images/app/logo.png') }}" alt="Logo" />
+<link rel="preload" href="{{ asset('fonts/Avenir-Light.ttf') }}" as="font" type="font/ttf" crossorigin />
 ```
 
+The first two are used by default in `src/App/templates/layout/default.html.twig`.
+
 > The source and destination folders are configured in the `vite.config.js` file.
+
+## Do not edit the `public` folder by hand
+
+Treat `public/css`, `public/js`, `public/fonts` and `public/images/app` as build output.
+Edit the matching files under `src/App/assets` and rebuild, or your change will be overwritten the next time anyone runs the build.
+
+The build overwrites the files it produces, but it does not currently clear these folders first.
+A file you remove from `src/App/assets` therefore stays behind in `public` until you delete it yourself, and a renamed asset leaves its old copy in place.
+If you need a clean result, delete the generated folders before rebuilding.
 
 ## Browser caching of `js` and `css`
 
@@ -50,9 +85,9 @@ A simple solution to force the browsers to download the newer version of the fil
 Whenever you commit changes to those files, make sure to increase the value of the `v` parameter.
 
 ```twig
-<link href="{{ asset('css/cls_dk.css?v=3') }}" rel="stylesheet" />
+<link href="{{ asset('css/app.css?v=3') }}" rel="stylesheet" />
 ...
-<script src="{{ asset('js/cls_dk.js?v=5') }}"></script>
+<script src="{{ asset('js/app.js?v=5') }}"></script>
 ```
 
 > The values 3 and 5 are provided as an example.
