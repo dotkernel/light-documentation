@@ -1,5 +1,11 @@
 # Server Requirements
 
+## Summary
+
+The web server, PHP version, and PHP modules and extensions Dotkernel Light needs in production.
+
+## Details
+
 For production, we highly recommend a *nix based system.
 
 ## Webserver
@@ -36,3 +42,11 @@ Both mod_php and FCGI (FPM) are supported.
 * gd, exif - if working with images
 * zlib, zip, bz2 - if compressing files
 * curl (required if APIs are used)
+
+## FAQ
+
+**Q: Which PHP versions does Dotkernel Light support?**
+A: PHP 8.3, 8.4 or 8.5, as declared by `composer.json`.
+
+**Q: Is Nginx supported out of the box?**
+A: No — the repository ships an Apache `.htaccess` file, which must be converted into Nginx configuration instructions manually.

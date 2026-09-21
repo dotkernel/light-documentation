@@ -1,6 +1,12 @@
 # Routing
 
-In our current implementation we are using request handlers instead of controllers in order for DotKernel to comply with the PSR-15 standard.
+## Summary
+
+How page routes are declared in configuration, and how each module turns that configuration into registered FastRoute routes.
+
+## Details
+
+In our current implementation we are using request handlers instead of controllers in order for Dotkernel to comply with the PSR-15 standard.
 
 ## How are we implementing handlers?
 
@@ -46,3 +52,14 @@ Each module registers its routes in a `RoutesDelegator.php` file, and the two mo
 ```php
     $app->get('/', [GetIndexViewHandler::class], 'app::index');
 ```
+
+## FAQ
+
+**Q: Where are page routes declared?**
+A: In `config/autoload/local.php`, under the `routes` key.
+
+**Q: What separates the route prefix from the template name in a route name?**
+A: A double colon — `url('page::about')` resolves, while `url('page.about')` throws.
+
+**Q: Does the homepage route go through the same config-driven mechanism as page routes?**
+A: No — `src/App/src/RoutesDelegator.php` registers it as a single static route, unlike `src/Page/src/RoutesDelegator.php`, which loops over the configured routes.

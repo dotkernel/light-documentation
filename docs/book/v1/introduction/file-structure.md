@@ -1,5 +1,11 @@
 # File structure
 
+## Summary
+
+Where each part of a Dotkernel Light installation lives, from the root files down to the module and template folders.
+
+## Details
+
 Dotkernel Light follows the [PSR-4](https://www.php-fig.org/psr/psr-4/) standards.
 
 It is a good practice to standardize the file structure of projects.
@@ -113,3 +119,14 @@ This directory contains the template files.
 
 This folder contains the application's test suite.
 `test/Unit` holds the unit tests, which run with `composer test`.
+
+## FAQ
+
+**Q: Where do I put a new service class for a module?**
+A: In that module's `src/Service` folder, wired up through its `ConfigProvider.php`.
+
+**Q: Which folders does the web server need to write to?**
+A: `data/cache/` for the compiled Twig templates and config cache, and `log/` for the daily error logs.
+
+**Q: Where does the front-end source code live, and where does it get built to?**
+A: The source is `src/App/assets/` (js, scss, fonts, images); Vite builds and copies it into the `public` folder.

@@ -1,5 +1,14 @@
 # Composer Installation of Packages
 
+## Summary
+
+How to install Dotkernel Light's PHP dependencies with Composer, and how to answer the interactive prompts it asks along the way.
+
+## Details
+
+> This page covers the manual `git clone` + `composer install` path described in [Getting started](getting-started.md).
+> If you installed with `composer create-project dotkernel/light dk`, this step already ran for you — skip ahead to [Development mode](development-mode.md).
+
 Composer is required to install Dotkernel Light. You can install Composer from the [official site](https://getcomposer.org/).
 
 > First make sure that you have navigated your command prompt to the folder where you copied the files in the previous step.
@@ -43,3 +52,14 @@ The next question is:
 `Remember this option for other packages of the same type? (y/N)`
 
 Type `y` here, and hit `enter` to complete this stage.
+
+## FAQ
+
+**Q: Why choose `[0] Do not inject` for the `ConfigProvider` prompt?**
+A: Because Dotkernel already registers its own `ConfigProvider` with the configuration the prompt would otherwise inject.
+
+**Q: Do I need to answer that prompt for every package?**
+A: No — answering `y` to "Remember this option for other packages of the same type?" applies your choice to the rest of the install.
+
+**Q: Do I need to run `composer install` if I used `composer create-project`?**
+A: No — `composer create-project` already installs dependencies for you; this page only applies to the manual clone path.

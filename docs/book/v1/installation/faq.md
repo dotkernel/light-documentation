@@ -1,5 +1,9 @@
 # Frequently Asked Questions
 
+## Summary
+
+Fixes for the permission errors most commonly hit when running Dotkernel Light for the first time.
+
 ## How do I fix common permission issues?
 
 If running your project you encounter some permission issues, follow the below steps.
