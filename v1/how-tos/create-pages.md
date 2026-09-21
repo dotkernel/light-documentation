@@ -1,5 +1,9 @@
 # Creating pages
 
+## Summary
+
+How to register a new route, wire it into the navigation, and create the Twig template it renders.
+
 ## Register the page route
 
 Open `config/autoload/local.php` and locate the **routes** key.
@@ -84,3 +88,14 @@ public function getTemplates(): array
 ## Accessing the page
 
 The url for the new page in this example is `/page/example-page`.
+
+## FAQ
+
+**Q: Where do I register a new page's route?**
+A: In `config/autoload/local.php`, under the `routes` -> `page` key.
+
+**Q: Does the route key have to match the template filename?**
+A: No — the array key is the page slug used in the URL, the array value is the template name; they can differ.
+
+**Q: Can I group templates into more than one folder?**
+A: Yes — add another entry under `paths` in the module's `ConfigProvider::getTemplates()`; the key doesn't need to match the folder name.

@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,12 +459,26 @@
     
 
     <h1 id="development-mode">Development mode</h1>
+<h2 id="summary">Summary</h2>
+<p>How to enable, disable and check development mode — and when you actually need to run these commands yourself.</p>
+<h2 id="details">Details</h2>
+<blockquote>
+<p><code>composer create-project dotkernel/light dk</code> already runs <code>composer development-enable</code> for you.
+You only need the command below after running <code>composer development-disable</code>, or if you installed by cloning the repository directly.</p>
+</blockquote>
 <p>If you're installing the project for development, make sure you have development mode enabled, by running:</p>
 <pre class="highlight"><code class="language-shell">composer development-enable</code></pre>
 <p>You can disable development mode by running:</p>
 <pre class="highlight"><code class="language-shell">composer development-disable</code></pre>
 <p>You can check if you have development mode enabled by running:</p>
 <pre class="highlight"><code class="language-shell">composer development-status</code></pre>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Do I need to run <code>composer development-enable</code> after <code>composer create-project</code>?</strong>
+A: No — <code>composer create-project</code> already runs it for you.</p>
+<p><strong>Q: How do I check which mode I'm in?</strong>
+A: Run <code>composer development-status</code>.</p>
+<p><strong>Q: What does development mode change?</strong>
+A: It turns the debug flag on and configuration caching off, and clears any existing config cache.</p>
 
 
 
@@ -497,6 +519,25 @@
     
 
     
+    
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
+                </li>
+            
+            </ul>
+        </div>
     
 
                 </div>

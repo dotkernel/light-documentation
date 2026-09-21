@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,6 +459,9 @@
     
 
     <h1 id="twitter-and-opengraph-cards">Twitter and OpenGraph cards</h1>
+<h2 id="summary">Summary</h2>
+<p>How to add Twitter (X) and OpenGraph card meta tags to a page, and how to point their image at an absolute URL.</p>
+<h2 id="details">Details</h2>
 <p>If you want to promote your pages on other platforms, you can post Twitter (X) and OpenGraph cards in the header section in the <code>src/App/templates/layout/default.html.twig</code> file.</p>
 <p>Make sure to update all items based on your page content.</p>
 <pre class="highlight"><code class="language-twig">&lt;!-- Twitter card --&gt;
@@ -477,6 +488,13 @@
 The image in the example, <code>images/app/logo.png</code>, is served from <code>public/images/app/logo.png</code>, where the Vite build copies it from <code>src/App/assets/images/logo.png</code>.
 Replace it with your own card image by adding the file to <code>src/App/assets/images/</code> and rebuilding.</li>
 </ul>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Why does the card image use <code>absolute_url()</code> instead of just <code>asset()</code>?</strong>
+A: Because <code>asset()</code> returns a path, but Twitter and OpenGraph cards require an absolute URL for the image.</p>
+<p><strong>Q: How do I get the homepage's absolute URL for the <code>og:url</code> tag?</strong>
+A: With <code>{{ url('app::index') }}</code>.</p>
+<p><strong>Q: Where does the card image file need to live?</strong>
+A: In <code>src/App/assets/images/</code>, so the Vite build copies it into <code>public/images/app/</code>.</p>
 
 
 
@@ -517,6 +535,25 @@ Replace it with your own card image by adding the file to <code>src/App/assets/i
     
 
     
+    
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
+                </li>
+            
+            </ul>
+        </div>
     
 
                 </div>

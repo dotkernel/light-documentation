@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,10 +459,13 @@
     
 
     <h1 id="edit-the-top-menu">Edit the top menu</h1>
+<h2 id="summary">Summary</h2>
+<p>How to edit the site-wide top menu, including grouped dropdown items and button-styled links.</p>
+<h2 id="details">Details</h2>
 <p>The top menu is displayed on all the pages, in the header.
 To edit it, go to <code>src/App/templates/layout/default.html.twig</code> and update the items under <code>id="navbarHeader"</code>.</p>
 <p>You can use the below as an example.</p>
-<pre class="highlight"><code class="language-twig">&lt;div class="menu" id="navbarHeader"&gt;
+<pre class="highlight"><code class="language-twig">&lt;div class="collapse navbar-collapse" id="navbarHeader"&gt;
     &lt;ul class="navbar-nav mr-auto"&gt;
       &lt;li class="nav-item dropdown"&gt;
         &lt;a class="nav-link dropdown-toggle" href="#" id="pageDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"&gt;Grouped Pages&lt;/a&gt;
@@ -484,6 +495,13 @@ They can be internal and/or external links.</li>
 <blockquote>
 <p>You can also replace the <code>nav-item</code> class for the <code>li</code> elements with <code>button-border</code> for a link that looks more like a button.</p>
 </blockquote>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Which file do I edit to change the top menu?</strong>
+A: <code>src/App/templates/layout/default.html.twig</code>, the items under <code>id="navbarHeader"</code>.</p>
+<p><strong>Q: How do I generate an internal link in the menu?</strong>
+A: With the <code>url()</code> helper and a route name, for example <code>{{ url('page::about') }}</code>.</p>
+<p><strong>Q: Can a menu item look like a button instead of a link?</strong>
+A: Yes — replace its <code>nav-item</code> class with <code>button-border</code>.</p>
 
 
 
@@ -524,6 +542,25 @@ They can be internal and/or external links.</li>
     
 
     
+    
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
+                </li>
+            
+            </ul>
+        </div>
     
 
                 </div>

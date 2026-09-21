@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,12 +459,19 @@
     
 
     <h1 id="clone-the-project">Clone the project</h1>
+<h2 id="summary">Summary</h2>
+<p>How to get a local copy of Dotkernel Light onto your machine, either with the recommended one-step Composer command or by cloning the repository directly.</p>
 <h2 id="recommended-development-environment">Recommended development environment</h2>
 <blockquote>
 <p>If you are using Windows as OS on your machine, you can use WSL2 as development environment.</p>
-<p>Read more on <a href="https://www.dotkernel.com/php-development/almalinux-9-in-wsl2-install-php-apache-mariadb-composer-phpmyadmin/">dotkernel.com</a>.</p>
+<p>Currently we provide a distro implementation for <a href="https://docs.dotkernel.org/development/v2/setup/installation/">AlmaLinux 10</a>.</p>
 </blockquote>
-<p>Using your terminal, navigate inside the directory you want to download the project files into.</p>
+<h2 id="installing-dotkernel-light">Installing Dotkernel Light</h2>
+<p>The recommended way to install Dotkernel Light is a single Composer command, which creates the directory, installs dependencies, and enables development mode in one step:</p>
+<pre class="highlight"><code class="language-shell">composer create-project dotkernel/light dk
+cd dk</code></pre>
+<h3 id="cloning-the-repository-directly">Cloning the repository directly</h3>
+<p>If you are instead cloning the repository directly — for example to contribute to Dotkernel Light itself — navigate inside the directory you want to download the project files into.</p>
 <blockquote>
 <p>Make sure that</p>
 <ul>
@@ -477,7 +492,15 @@ remote: Compressing objects: 100% (435/435), done.
 remote: Total 500 (delta 51), reused 448 (delta 27), pack-reused 0 (from 0)
 Receiving objects: 100% (500/500), 399.14 KiB | 3.91 MiB/s, done.
 Resolving deltas: 100% (51/51), done.</code></pre>
+<p>Continue with <a href="../composer/">Composer Installation</a>, which requires the extra manual <code>composer development-enable</code> step that <code>composer create-project</code> performs for you automatically.</p>
 <p>You can already open the project in your preferred IDE to double-check the files were copied correctly.</p>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: What is the fastest way to install Dotkernel Light?</strong>
+A: <code>composer create-project dotkernel/light dk</code> — it creates the directory, installs dependencies, and enables development mode in one step.</p>
+<p><strong>Q: Do I need an empty directory for <code>composer create-project</code>?</strong>
+A: No — only the manual <code>git clone</code> path requires an empty, writable directory.</p>
+<p><strong>Q: If I clone the repository directly, what extra step do I need that <code>composer create-project</code> skips?</strong>
+A: Running <code>composer development-enable</code> yourself, since only <code>composer create-project</code> runs it automatically.</p>
 
 
 
@@ -524,7 +547,19 @@ Resolving deltas: 100% (51/51), done.</code></pre>
             <ul class="toc__list">
             
                 <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#recommended-development-environment" class="toc__link nav-link">Recommended development environment</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#installing-dotkernel-light" class="toc__link nav-link">Installing Dotkernel Light</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
                 </li>
             
             </ul>

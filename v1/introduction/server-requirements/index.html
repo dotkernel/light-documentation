@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,6 +459,9 @@
     
 
     <h1 id="server-requirements">Server Requirements</h1>
+<h2 id="summary">Summary</h2>
+<p>The web server, PHP version, and PHP modules and extensions Dotkernel Light needs in production.</p>
+<h2 id="details">Details</h2>
 <p>For production, we highly recommend a *nix based system.</p>
 <h2 id="webserver">Webserver</h2>
 <h3 id="apache-22">Apache &gt;= 2.2</h3>
@@ -484,6 +495,11 @@ PHP 8.5 was added in release 1.4.0 and PHP 8.2 was dropped in release 1.5.0, so 
 <li>zlib, zip, bz2 - if compressing files</li>
 <li>curl (required if APIs are used)</li>
 </ul>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Which PHP versions does Dotkernel Light support?</strong>
+A: PHP 8.3, 8.4 or 8.5, as declared by <code>composer.json</code>.</p>
+<p><strong>Q: Is Nginx supported out of the box?</strong>
+A: No — the repository ships an Apache <code>.htaccess</code> file, which must be converted into Nginx configuration instructions manually.</p>
 
 
 
@@ -530,6 +546,14 @@ PHP 8.5 was added in release 1.4.0 and PHP 8.2 was dropped in release 1.5.0, so 
             <ul class="toc__list">
             
                 <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#webserver" class="toc__link nav-link">Webserver</a>
                 </li>
             
@@ -543,6 +567,10 @@ PHP 8.5 was added in release 1.4.0 and PHP 8.2 was dropped in release 1.5.0, so 
             
                 <li class="toc__entry">
                     <a href="#recommended-extensions" class="toc__link nav-link">Recommended extensions</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
                 </li>
             
             </ul>

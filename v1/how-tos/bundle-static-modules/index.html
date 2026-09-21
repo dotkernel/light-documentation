@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,8 +459,11 @@
     
 
     <h1 id="bundle-static-modules">Bundle Static Modules</h1>
+<h2 id="summary">Summary</h2>
+<p>How to install and run the Vite build that compiles Dotkernel Light's front-end assets into the <code>public</code> folder.</p>
+<h2 id="details">Details</h2>
 <blockquote>
-<p>Prerequisite software: Node.js v20 (minimum supported version)</p>
+<p>Prerequisite software: Node.js <code>^20.19.0 || &gt;=22.12.0</code> (per <code>package.json</code>)</p>
 </blockquote>
 <p><a href="https://vite.dev/">Vite</a> is a frontend dev tool we use:</p>
 <ul>
@@ -475,13 +486,20 @@ Our recommendation is to install npm through <code>Node Version Manager</code>.<
 <li>images</li>
 <li>js</li>
 </ul>
-<p>The folders are populated from their counterparts in <code>src/App/assets</code>.</p>
+<p>The folders are populated from their counterparts in <code>src/App/assets</code>, with one exception: images are copied into <code>public/images/app/</code>, not <code>public/images/</code> directly, so template references look like <code>{{ asset('images/app/logo.svg') }}</code>. <code>fonts</code> has no such prefix and is copied flat into <code>public/fonts/</code>. See <code>vite.config.js</code> for the exact mapping.</p>
 <blockquote>
 <p>Make sure to not edit anything inside the four public folders manually.
 Other files and folders in the public folder will be left as is.</p>
 </blockquote>
 <p>An alternative to the <code>watch</code> command is <code>build</code> which simply compiles the components, overwriting as needed:</p>
 <pre class="highlight"><code class="language-shell">npm run build</code></pre>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: What is the minimum Node.js version Dotkernel Light supports?</strong>
+A: <code>^20.19.0 || &gt;=22.12.0</code>, as declared in <code>package.json</code>'s <code>engines</code> field.</p>
+<p><strong>Q: What's the difference between <code>npm run watch</code> and <code>npm run build</code>?</strong>
+A: <code>watch</code> recompiles automatically whenever a source file changes; <code>build</code> compiles once.</p>
+<p><strong>Q: Can I edit the compiled files under <code>public/css</code>, <code>public/js</code>, <code>public/fonts</code> or <code>public/images</code> directly?</strong>
+A: No — Vite deletes and rebuilds those four folders on every run, from their counterparts in <code>src/App/assets</code>.</p>
 
 
 
@@ -522,6 +540,25 @@ Other files and folders in the public folder will be left as is.</p>
     
 
     
+    
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
+                </li>
+            
+            </ul>
+        </div>
     
 
                 </div>

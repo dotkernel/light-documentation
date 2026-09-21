@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,6 +459,9 @@
     
 
     <h1 id="manage-assets">Manage Assets</h1>
+<h2 id="summary">Summary</h2>
+<p>Where asset source files live, where Vite builds and copies them to, and how to bust the browser cache when they change.</p>
+<h2 id="details">Details</h2>
 <p>If you haven't already done so, make sure <code>npm</code> is installed.
 You can keep it running during your updates with <code>npm run watch</code> or run this command after the edits are completed <code>npm run build</code>.</p>
 <h2 id="what-are-assets">What are assets?</h2>
@@ -474,7 +485,7 @@ You can keep it running during your updates with <code>npm run watch</code> or r
 <p>You should not manage the items from the above folders manually.
 The <code>npm</code> script will delete/replace the files when run.</p>
 </blockquote>
-<p>While the <code>images</code> and <code>fonts</code> folders are copied as is, the <code>js</code> and <code>scss</code> are minimized:</p>
+<p>The <code>fonts</code> folder is copied flat into <code>public/fonts/</code>, but the <code>images</code> folder is copied under an extra <code>app/</code> segment — <code>src/App/assets/images/icon/hand.svg</code> becomes <code>public/images/app/icon/hand.svg</code>, not <code>public/images/icon/hand.svg</code>. See <code>vite.config.js</code> for the exact mapping. The <code>js</code> and <code>scss</code> files are minimized:</p>
 <ul>
 <li><code>scss</code> files are minimized under <code>public/css/app.css</code>.</li>
 <li><code>js</code> files are minimized under <code>public/js/app.js</code>.</li>
@@ -498,6 +509,13 @@ Whenever you commit changes to those files, make sure to increase the value of t
 <p>The values 3 and 5 are provided as an example.
 The important thing is to use values for each file that you haven't used before, so incrementing the value for <code>v</code> is a simple way to track each change.</p>
 </blockquote>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Where do image assets actually end up after the build?</strong>
+A: Under <code>public/images/app/</code>, not <code>public/images/</code> directly — the <code>images</code> copy target in <code>vite.config.js</code> adds an <code>app/</code> segment that <code>fonts</code> doesn't.</p>
+<p><strong>Q: How do I force browsers to fetch an updated CSS or JS file?</strong>
+A: Add or increment a <code>?v=</code> query parameter on the asset URL, for example <code>app.css?v=3</code>.</p>
+<p><strong>Q: Should I edit files directly under <code>public/css</code>, <code>public/js</code>, <code>public/fonts</code> or <code>public/images</code>?</strong>
+A: No — the <code>npm</code> script deletes and rebuilds those folders from <code>src/App/assets/</code> on every run.</p>
 
 
 
@@ -539,6 +557,14 @@ The important thing is to use values for each file that you haven't used before,
             <ul class="toc__list">
             
                 <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#what-are-assets" class="toc__link nav-link">What are assets?</a>
                 </li>
             
@@ -548,6 +574,10 @@ The important thing is to use values for each file that you haven't used before,
             
                 <li class="toc__entry">
                     <a href="#browser-caching-of-js-and-css" class="toc__link nav-link">Browser caching of js and css</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
                 </li>
             
             </ul>

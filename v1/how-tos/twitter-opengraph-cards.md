@@ -1,5 +1,11 @@
 # Twitter and OpenGraph cards
 
+## Summary
+
+How to add Twitter (X) and OpenGraph card meta tags to a page, and how to point their image at an absolute URL.
+
+## Details
+
 If you want to promote your pages on other platforms, you can post Twitter (X) and OpenGraph cards in the header section in the `src/App/templates/layout/default.html.twig` file.
 
 Make sure to update all items based on your page content.
@@ -28,3 +34,14 @@ In the example:
 - Card images must be absolute URLs too, but `asset()` on its own returns a path, so it is wrapped in `absolute_url()`.
 The image in the example, `images/app/logo.png`, is served from `public/images/app/logo.png`, where the Vite build copies it from `src/App/assets/images/logo.png`.
 Replace it with your own card image by adding the file to `src/App/assets/images/` and rebuilding.
+
+## FAQ
+
+**Q: Why does the card image use `absolute_url()` instead of just `asset()`?**
+A: Because `asset()` returns a path, but Twitter and OpenGraph cards require an absolute URL for the image.
+
+**Q: How do I get the homepage's absolute URL for the `og:url` tag?**
+A: With `{{ url('app::index') }}`.
+
+**Q: Where does the card image file need to live?**
+A: In `src/App/assets/images/`, so the Vite build copies it into `public/images/app/`.

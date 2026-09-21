@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,6 +459,8 @@
     
 
     <h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+<h2 id="summary">Summary</h2>
+<p>Fixes for the permission errors most commonly hit when running Dotkernel Light for the first time.</p>
 <h2 id="how-do-i-fix-common-permission-issues">How do I fix common permission issues?</h2>
 <p>If running your project you encounter some permission issues, follow the below steps.</p>
 <h3 id="errors">Errors</h3>
@@ -458,14 +468,21 @@
 <p>PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/<em>example.local</em>/html/data" is not writable...</p>
 <p>PHP Fatal error:  Uncaught InvalidArgumentException: The directory "/var/www/<em>example.local</em>/html/data/cache" is not writable...</p>
 </blockquote>
-<p><strong>Fix:</strong></p>
-<pre class="highlight"><code class="language-shell">chmod -R 777 data</code></pre>
+<p><strong>Fix:</strong> give the web-server user write access through the group, rather than opening the folder to everyone.</p>
+<pre class="highlight"><code class="language-shell">sudo chown -R "$USER":www-data data
+sudo chmod -R 775 data</code></pre>
 <h3 id="error">Error</h3>
 <blockquote>
 <p>PHP Fatal error:  Uncaught ErrorException: fopen(/var/www/<em>example.local</em>/config/autoload/../../log/error-log-<em>yyyy-mm-dd.log</em>): Failed to open stream: Permission denied...</p>
 </blockquote>
 <p><strong>Fix:</strong></p>
-<pre class="highlight"><code class="language-shell">chmod -R 777 log</code></pre>
+<pre class="highlight"><code class="language-shell">sudo chown -R "$USER":www-data log
+sudo chmod -R 775 log</code></pre>
+<blockquote>
+<p>Replace <code>www-data</code> with the user your web server runs as if it differs — it is <code>apache</code> on AlmaLinux and RHEL derivatives, and <code>nginx</code> where nginx runs the worker processes.</p>
+<p><code>chmod -R 777</code> is sometimes suggested for these folders.
+Avoid it outside a throwaway local VM: it lets anything on the machine rewrite the Twig and config caches, and those are executable PHP.</p>
+</blockquote>
 
 
 
@@ -510,6 +527,10 @@
         <div class="toc">
             <h6 class="toc__headline">On this page</h6>
             <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
             
                 <li class="toc__entry">
                     <a href="#how-do-i-fix-common-permission-issues" class="toc__link nav-link">How do I fix common permission issues?</a>

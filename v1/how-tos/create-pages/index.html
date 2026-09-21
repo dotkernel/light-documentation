@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,6 +459,8 @@
     
 
     <h1 id="creating-pages">Creating pages</h1>
+<h2 id="summary">Summary</h2>
+<p>How to register a new route, wire it into the navigation, and create the Twig template it renders.</p>
 <h2 id="register-the-page-route">Register the page route</h2>
 <p>Open <code>config/autoload/local.php</code> and locate the <strong>routes</strong> key.
 Under the <strong>page</strong> key you will find an associative array with a couple of already existing routes.
@@ -513,6 +523,13 @@ This item is defined in <code>src/Page/src/ConfigProvider.php</code> in <code>ge
 }</code></pre>
 <h2 id="accessing-the-page">Accessing the page</h2>
 <p>The url for the new page in this example is <code>/page/example-page</code>.</p>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Where do I register a new page's route?</strong>
+A: In <code>config/autoload/local.php</code>, under the <code>routes</code> -&gt; <code>page</code> key.</p>
+<p><strong>Q: Does the route key have to match the template filename?</strong>
+A: No — the array key is the page slug used in the URL, the array value is the template name; they can differ.</p>
+<p><strong>Q: Can I group templates into more than one folder?</strong>
+A: Yes — add another entry under <code>paths</code> in the module's <code>ConfigProvider::getTemplates()</code>; the key doesn't need to match the folder name.</p>
 
 
 
@@ -559,6 +576,10 @@ This item is defined in <code>src/Page/src/ConfigProvider.php</code> in <code>ge
             <ul class="toc__list">
             
                 <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#register-the-page-route" class="toc__link nav-link">Register the page route</a>
                 </li>
             
@@ -568,6 +589,10 @@ This item is defined in <code>src/Page/src/ConfigProvider.php</code> in <code>ge
             
                 <li class="toc__entry">
                     <a href="#accessing-the-page" class="toc__link nav-link">Accessing the page</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
                 </li>
             
             </ul>

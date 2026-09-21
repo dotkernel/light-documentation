@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,7 +459,10 @@
     
 
     <h1 id="routing">Routing</h1>
-<p>In our current implementation we are using request handlers instead of controllers in order for DotKernel to comply with the PSR-15 standard.</p>
+<h2 id="summary">Summary</h2>
+<p>How page routes are declared in configuration, and how each module turns that configuration into registered FastRoute routes.</p>
+<h2 id="details">Details</h2>
+<p>In our current implementation we are using request handlers instead of controllers in order for Dotkernel to comply with the PSR-15 standard.</p>
 <h2 id="how-are-we-implementing-handlers">How are we implementing handlers?</h2>
 <h3 id="declaration-of-the-routes-and-modules">Declaration of the routes and modules</h3>
 <p>Currently, our structure uses modules, routes and template names.
@@ -481,6 +492,13 @@ With each request, when matching one of these routes, the <code>GetPageViewHandl
     }</code></pre>
 <p><code>src/App/src/RoutesDelegator.php</code> declares no config-driven routes at all — it registers a single static route for the home page:</p>
 <pre class="highlight"><code class="language-php">    $app-&gt;get('/', [GetIndexViewHandler::class], 'app::index');</code></pre>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Where are page routes declared?</strong>
+A: In <code>config/autoload/local.php</code>, under the <code>routes</code> key.</p>
+<p><strong>Q: What separates the route prefix from the template name in a route name?</strong>
+A: A double colon — <code>url('page::about')</code> resolves, while <code>url('page.about')</code> throws.</p>
+<p><strong>Q: Does the homepage route go through the same config-driven mechanism as page routes?</strong>
+A: No — <code>src/App/src/RoutesDelegator.php</code> registers it as a single static route, unlike <code>src/Page/src/RoutesDelegator.php</code>, which loops over the configured routes.</p>
 
 
 
@@ -527,7 +545,19 @@ With each request, when matching one of these routes, the <code>GetPageViewHandl
             <ul class="toc__list">
             
                 <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#how-are-we-implementing-handlers" class="toc__link nav-link">How are we implementing handlers?</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
                 </li>
             
             </ul>

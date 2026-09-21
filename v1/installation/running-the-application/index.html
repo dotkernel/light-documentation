@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,6 +459,9 @@
     
 
     <h1 id="running-the-application">Running the application</h1>
+<h2 id="summary">Summary</h2>
+<p>How to run Dotkernel Light locally on AlmaLinux 10 under WSL 2, and how to recover from a stale config cache.</p>
+<h2 id="details">Details</h2>
 <p>We recommend running the application on <strong>AlmaLinux 10</strong>, using <strong>WSL 2</strong>:</p>
 <ul>
 <li>if you don't already have:<ul>
@@ -460,13 +471,10 @@
 </li>
 <li>install the application in a virtualhost as recommended by the chosen distro</li>
 <li>set <code>$baseUrl</code> in <strong>config/autoload/local.php</strong> to the address of the virtualhost</li>
-<li>set the permissions for the <code>data</code> folder</li>
+<li>give the web server write access to the <code>data</code> and <code>log</code> folders</li>
 </ul>
-<pre class="highlight"><code class="language-shell">chmod -R 777 ./data</code></pre>
-<ul>
-<li>set the permissions for the log folder</li>
-</ul>
-<pre class="highlight"><code class="language-shell">chmod -R 777 ./log</code></pre>
+<pre class="highlight"><code class="language-shell">sudo chown -R "$USER":www-data data log
+sudo chmod -R 775 data log</code></pre>
 <ul>
 <li>run the application by opening the virtualhost address in your browser</li>
 </ul>
@@ -474,10 +482,19 @@
 <blockquote>
 <p>If you are getting exceptions or errors regarding some missing services, try running the following command:</p>
 </blockquote>
-<pre class="highlight"><code class="language-shell">sudo php ./bin/clear-config-cache.php</code></pre>
+<pre class="highlight"><code class="language-shell">composer clear-config-cache</code></pre>
+<p>Do not run this with <code>sudo</code>.
+Doing so leaves the regenerated <code>data/cache/config-cache.php</code> owned by root, which the application can no longer rewrite — the permission errors the <a href="../faq/">FAQ</a> exists to fix.</p>
 <blockquote>
 <p>If <code>data/cache/config-cache.php</code> is present, that config will be loaded regardless of the <code>ConfigAggregator::ENABLE_CACHE</code> configuration in <code>config/autoload/mezzio.global.php</code></p>
 </blockquote>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Which folders does the web server need write access to?</strong>
+A: <code>data</code> and <code>log</code>, owned by your user with group write access for the web server's group.</p>
+<p><strong>Q: What should I do if I get errors about missing services?</strong>
+A: Run <code>composer clear-config-cache</code> — without <code>sudo</code> — to clear the stale config cache.</p>
+<p><strong>Q: Why shouldn't I run <code>composer clear-config-cache</code> with <code>sudo</code>?</strong>
+A: It would leave the regenerated <code>data/cache/config-cache.php</code> owned by root, which the application can no longer rewrite.</p>
 
 
 
@@ -518,6 +535,25 @@
     
 
     
+    
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
+                </li>
+            
+            </ul>
+        </div>
     
 
                 </div>

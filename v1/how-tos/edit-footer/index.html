@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,6 +459,9 @@
     
 
     <h1 id="footer">Footer</h1>
+<h2 id="summary">Summary</h2>
+<p>How to edit the site-wide footer, with an example that groups links into categories and columns.</p>
+<h2 id="details">Details</h2>
 <p>To edit the footer on all the pages, search for <code>&lt;footer class="app-footer"&gt;</code> in the <code>src/App/templates/layout/default.html.twig</code> template.
 The content is usually basic <code>HTML</code> and <code>CSS</code> with <code>twig</code>.</p>
 <p>Below is an example of a footer that groups urls under two categories and columns.
@@ -519,6 +530,13 @@ It also contains the copyright row.</p>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/footer&gt;</code></pre>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Which element in <code>default.html.twig</code> renders the footer?</strong>
+A: The <code>&lt;footer class="app-footer"&gt;</code> element.</p>
+<p><strong>Q: Can the footer contain more than one column of links?</strong>
+A: Yes — the example groups links under two categories, each split into columns with Bootstrap's <code>col-md-*</code> classes.</p>
+<p><strong>Q: How do I show the current year in the copyright line?</strong>
+A: With the Twig filter <code>{{ 'now' | date('Y') }}</code>.</p>
 
 
 
@@ -559,6 +577,25 @@ It also contains the copyright row.</p>
     
 
     
+    
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
+                </li>
+            
+            </ul>
+        </div>
     
 
                 </div>

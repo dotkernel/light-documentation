@@ -79,6 +79,10 @@
                 <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
             </li>
             
+            <li class="">
+                <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
+            </li>
+            
         </ul>
 
         <div class="flex-grow-1"></div>
@@ -126,6 +130,10 @@
                 
                 <li class="">
                     <a href="https://docs.dotkernel.org/headless-documentation/">Headless Platform</a>
+                </li>
+                
+                <li class="">
+                    <a href="https://docs.dotkernel.org/dotboost/">Dotboost</a>
                 </li>
                 
             </ul>
@@ -451,6 +459,13 @@
     
 
     <h1 id="composer-installation-of-packages">Composer Installation of Packages</h1>
+<h2 id="summary">Summary</h2>
+<p>How to install Dotkernel Light's PHP dependencies with Composer, and how to answer the interactive prompts it asks along the way.</p>
+<h2 id="details">Details</h2>
+<blockquote>
+<p>This page covers the manual <code>git clone</code> + <code>composer install</code> path described in <a href="../getting-started/">Getting started</a>.
+If you installed with <code>composer create-project dotkernel/light dk</code>, this step already ran for you — skip ahead to <a href="../development-mode/">Development mode</a>.</p>
+</blockquote>
 <p>Composer is required to install Dotkernel Light. You can install Composer from the <a href="https://getcomposer.org/">official site</a>.</p>
 <blockquote>
 <p>First make sure that you have navigated your command prompt to the folder where you copied the files in the previous step.</p>
@@ -461,18 +476,10 @@
 <p>Use the <strong>CLI</strong> in order to ensure interactivity for proper configuration.</p>
 </blockquote>
 <pre class="highlight"><code class="language-shell">composer install</code></pre>
-<p>You should see this text below, along with a long list of packages to be installed instead of the <code>[...]</code>.
-In this example there are 109 packages, though the number can change in future updates.
-You will find the packages in the <code>vendor</code> folder.</p>
-<pre class="highlight"><code class="language-shell">No composer.lock file present. Updating dependencies to latest instead of installing from lock file. See https://getcomposer.org/install for more information.
-Loading composer repositories with package information
-Updating dependencies
-Lock file operations: 109 installs, 0 updates, 0 removals
-[...]
-Writing lock file
-Installing dependencies from lock file (including require-dev)
-Package operations: 109 installs, 0 updates, 0 removals
-[...]</code></pre>
+<p>Composer resolves the dependency tree, writes a lock file and installs the packages into the <code>vendor</code> folder.
+The run starts with a notice like this one:</p>
+<pre class="highlight"><code class="language-shell">No composer.lock file present. Updating dependencies to latest instead of installing from lock file. See https://getcomposer.org/install for more information.</code></pre>
+<p>The exact package count depends on the release you are installing, so do not be concerned if the number on your terminal differs from anyone else's.</p>
 <p>The setup script may prompt for some configuration settings, for example the lines below.
 If you don't see them, you can skip to the next section.</p>
 <pre class="highlight"><code class="language-shell">Please select which config file you wish to inject 'Laminas\HttpHandlerRunner\ConfigProvider' into:
@@ -487,6 +494,13 @@ If you choose <code>[1] config/config.php</code>, an extra <code>ConfigProvider<
 <p>The next question is:</p>
 <p><code>Remember this option for other packages of the same type? (y/N)</code></p>
 <p>Type <code>y</code> here, and hit <code>enter</code> to complete this stage.</p>
+<h2 id="faq">FAQ</h2>
+<p><strong>Q: Why choose <code>[0] Do not inject</code> for the <code>ConfigProvider</code> prompt?</strong>
+A: Because Dotkernel already registers its own <code>ConfigProvider</code> with the configuration the prompt would otherwise inject.</p>
+<p><strong>Q: Do I need to answer that prompt for every package?</strong>
+A: No — answering <code>y</code> to "Remember this option for other packages of the same type?" applies your choice to the rest of the install.</p>
+<p><strong>Q: Do I need to run <code>composer install</code> if I used <code>composer create-project</code>?</strong>
+A: No — <code>composer create-project</code> already installs dependencies for you; this page only applies to the manual clone path.</p>
 
 
 
@@ -533,7 +547,19 @@ If you choose <code>[1] config/config.php</code>, an extra <code>ConfigProvider<
             <ul class="toc__list">
             
                 <li class="toc__entry">
+                    <a href="#summary" class="toc__link nav-link">Summary</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#details" class="toc__link nav-link">Details</a>
+                </li>
+            
+                <li class="toc__entry">
                     <a href="#install-dependencies" class="toc__link nav-link">Install dependencies</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#faq" class="toc__link nav-link">FAQ</a>
                 </li>
             
             </ul>
