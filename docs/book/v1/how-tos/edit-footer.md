@@ -1,5 +1,11 @@
 # Footer
 
+## Summary
+
+How to edit the site-wide footer, with an example that groups links into categories and columns.
+
+## Details
+
 To edit the footer on all the pages, search for `<footer class="app-footer">` in the `src/App/templates/layout/default.html.twig` template.
 The content is usually basic `HTML` and `CSS` with `twig`.
 
@@ -72,3 +78,14 @@ It also contains the copyright row.
     </div>
 </footer>
 ```
+
+## FAQ
+
+**Q: Which element in `default.html.twig` renders the footer?**
+A: The `<footer class="app-footer">` element.
+
+**Q: Can the footer contain more than one column of links?**
+A: Yes — the example groups links under two categories, each split into columns with Bootstrap's `col-md-*` classes.
+
+**Q: How do I show the current year in the copyright line?**
+A: With the Twig filter `{{ 'now' | date('Y') }}`.

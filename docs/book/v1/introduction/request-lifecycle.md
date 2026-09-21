@@ -1,5 +1,11 @@
 # Request Lifecycle for a Mezzio-Based Application
 
+## Summary
+
+The eleven steps a Dotkernel Light request travels through, from `public/index.php` to the emitted response.
+
+## Details
+
 The request lifecycle is the sequence of steps that happen from the moment a user makes an HTTP request until the server sends back a response.
 
 The graph below shows how the request is handled by Dotkernel Light.
@@ -105,3 +111,14 @@ Middleware can modify headers, cookies, compress content, etc.
 
 The final response is sent back to the browser.
 The page is rendered and sent to the user.
+
+## FAQ
+
+**Q: How many steps does a Dotkernel Light request go through?**
+A: Eleven, from the initial HTTP request in `public/index.php` to the response emitter.
+
+**Q: Which component matches the URL to a handler?**
+A: FastRoute, in the routing step.
+
+**Q: How does a handler know which template to render?**
+A: It reads the matched route name off the request, for example `page::about`, and passes it to the Twig renderer.

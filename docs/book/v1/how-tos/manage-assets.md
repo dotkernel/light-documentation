@@ -1,5 +1,11 @@
 # Manage Assets
 
+## Summary
+
+Where asset source files live, where Vite builds and copies them to, and how to bust the browser cache when they change.
+
+## Details
+
 If you haven't already done so, make sure `npm` is installed.
 You can keep it running during your updates with `npm run watch` or run this command after the edits are completed `npm run build`.
 
@@ -26,7 +32,7 @@ The `npm` script processes these files and copies or builds files under the `pub
 > You should not manage the items from the above folders manually.
 > The `npm` script will delete/replace the files when run.
 
-While the `images` and `fonts` folders are copied as is, the `js` and `scss` are minimized:
+The `fonts` folder is copied flat into `public/fonts/`, but the `images` folder is copied under an extra `app/` segment — `src/App/assets/images/icon/hand.svg` becomes `public/images/app/icon/hand.svg`, not `public/images/icon/hand.svg`. See `vite.config.js` for the exact mapping. The `js` and `scss` files are minimized:
 
 - `scss` files are minimized under `public/css/app.css`.
 - `js` files are minimized under `public/js/app.js`.
@@ -57,3 +63,14 @@ Whenever you commit changes to those files, make sure to increase the value of t
 
 > The values 3 and 5 are provided as an example.
 > The important thing is to use values for each file that you haven't used before, so incrementing the value for `v` is a simple way to track each change.
+
+## FAQ
+
+**Q: Where do image assets actually end up after the build?**
+A: Under `public/images/app/`, not `public/images/` directly — the `images` copy target in `vite.config.js` adds an `app/` segment that `fonts` doesn't.
+
+**Q: How do I force browsers to fetch an updated CSS or JS file?**
+A: Add or increment a `?v=` query parameter on the asset URL, for example `app.css?v=3`.
+
+**Q: Should I edit files directly under `public/css`, `public/js`, `public/fonts` or `public/images`?**
+A: No — the `npm` script deletes and rebuilds those folders from `src/App/assets/` on every run.
