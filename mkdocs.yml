@@ -28,6 +28,8 @@ nav:
           - "Edit the Top Menu": v1/how-tos/edit-top-menu.md
           - "Edit the Footer": v1/how-tos/edit-footer.md
           - "Manage Assets": v1/how-tos/manage-assets.md
+      - Upgrading:
+          - "Upgrading from 1.0 to 1.5": v1/upgrading/UPGRADE-1.5.md
 site_name: light
 site_description: "Dotkernel Light"
 repo_url: "https://github.com/dotkernel/light"
