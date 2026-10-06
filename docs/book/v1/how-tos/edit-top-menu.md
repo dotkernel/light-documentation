@@ -1,12 +1,18 @@
 # Edit the top menu
 
+## Summary
+
+How to edit the site-wide top menu, including grouped dropdown items and button-styled links.
+
+## Details
+
 The top menu is displayed on all the pages, in the header.
 To edit it, go to `src/App/templates/layout/default.html.twig` and update the items under `id="navbarHeader"`.
 
 You can use the below as an example.
 
 ```twig
-<div class="menu" id="navbarHeader">
+<div class="collapse navbar-collapse" id="navbarHeader">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pageDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grouped Pages</a>
@@ -38,3 +44,14 @@ They can be internal and/or external links.
 - The `First Link` and `Second Link` are regular links, one an internal link and the other an external one.
 
 > You can also replace the `nav-item` class for the `li` elements with `button-border` for a link that looks more like a button.
+
+## FAQ
+
+**Q: Which file do I edit to change the top menu?**
+A: `src/App/templates/layout/default.html.twig`, the items under `id="navbarHeader"`.
+
+**Q: How do I generate an internal link in the menu?**
+A: With the `url()` helper and a route name, for example `{{ url('page::about') }}`.
+
+**Q: Can a menu item look like a button instead of a link?**
+A: Yes — replace its `nav-item` class with `button-border`.

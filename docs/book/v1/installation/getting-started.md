@@ -1,12 +1,27 @@
 # Clone the project
 
+## Summary
+
+How to get a local copy of Dotkernel Light onto your machine, either with the recommended one-step Composer command or by cloning the repository directly.
+
 ## Recommended development environment
 
 > If you are using Windows as OS on your machine, you can use WSL2 as development environment.
 >
-> Read more on [dotkernel.com](https://www.dotkernel.com/php-development/almalinux-9-in-wsl2-install-php-apache-mariadb-composer-phpmyadmin/).
+> Currently we provide a distro implementation for [AlmaLinux 10](https://docs.dotkernel.org/development/v2/setup/installation/).
 
-Using your terminal, navigate inside the directory you want to download the project files into.
+## Installing Dotkernel Light
+
+The recommended way to install Dotkernel Light is a single Composer command, which creates the directory, installs dependencies, and enables development mode in one step:
+
+```shell
+composer create-project dotkernel/light dk
+cd dk
+```
+
+### Cloning the repository directly
+
+If you are instead cloning the repository directly — for example to contribute to Dotkernel Light itself — navigate inside the directory you want to download the project files into.
 
 > Make sure that
 >
@@ -32,4 +47,17 @@ Receiving objects: 100% (500/500), 399.14 KiB | 3.91 MiB/s, done.
 Resolving deltas: 100% (51/51), done.
 ```
 
+Continue with [Composer Installation](composer.md), which requires the extra manual `composer development-enable` step that `composer create-project` performs for you automatically.
+
 You can already open the project in your preferred IDE to double-check the files were copied correctly.
+
+## FAQ
+
+**Q: What is the fastest way to install Dotkernel Light?**
+A: `composer create-project dotkernel/light dk` — it creates the directory, installs dependencies, and enables development mode in one step.
+
+**Q: Do I need an empty directory for `composer create-project`?**
+A: No — only the manual `git clone` path requires an empty, writable directory.
+
+**Q: If I clone the repository directly, what extra step do I need that `composer create-project` skips?**
+A: Running `composer development-enable` yourself, since only `composer create-project` runs it automatically.

@@ -1,6 +1,12 @@
 # Assets and the Vite build
 
-Assets are the static files used by your content: images, fonts, JavaScript and SCSS.
+## Summary
+
+Where asset source files live, where Vite builds and copies them to, and how to bust the browser cache when they change.
+
+## Details
+
+Assets are the static files used by your content: images, fonts, JavaScript, and SCSS.
 [Vite](https://vite.dev/) compiles and copies them from `src/App/assets` into the `public` folder, which is the only folder the web server serves.
 
 > Prerequisite software: Node.js.
@@ -28,13 +34,17 @@ Our recommendation is to install npm through `Node Version Manager`.
 
 ## Build the assets
 
+The `fonts` folder is copied flat into `public/fonts/`, but the `images` folder is copied under an extra `app/` segment - `src/App/assets/images/icon/hand.svg` becomes `public/images/app/icon/hand.svg`, not `public/images/icon/hand.svg`.
+See `vite.config.js` for the exact mapping.
+The `js` and `scss` files are minimized.
+
 The `build` command compiles the components, overwriting as needed:
 
 ```shell
 npm run build
 ```
 
-The `watch` command compiles the components, then monitors the source files and triggers their recompilation when one of them is changed:
+The `watch` command compiles the components, then monitors the source files, and triggers their recompilation when one of them is changed:
 
 ```shell
 npm run watch
@@ -43,14 +53,14 @@ npm run watch
 ## Source and destination
 
 The source of these files is the `src/App/assets/` folder.
-The destinations are not symmetrical — the `js` and `scss` trees are bundled into a single file each, and `images` lands in a subfolder of `public/images`:
+The destinations are not symmetrical - the `js` and `scss` trees are bundled into a single file each, and `images` lands in a subfolder of `public/images`:
 
-| Source | Destination | What happens |
-| --- | --- | --- |
-| `src/App/assets/scss` | `public/css/app.css` | compiled from SCSS and minified into one file |
-| `src/App/assets/js` | `public/js/app.js` | bundled and minified into one file |
-| `src/App/assets/fonts` | `public/fonts/` | copied as is |
-| `src/App/assets/images` | `public/images/app/` | copied as is |
+| Source                  | Destination          | What happens                                  |
+|-------------------------|----------------------|-----------------------------------------------|
+| `src/App/assets/scss`   | `public/css/app.css` | compiled from SCSS and minified into one file |
+| `src/App/assets/js`     | `public/js/app.js`   | bundled and minified into one file            |
+| `src/App/assets/fonts`  | `public/fonts/`      | copied as is                                  |
+| `src/App/assets/images` | `public/images/app/` | copied as is                                  |
 
 The `images/app/` destination is the one that catches people out: a file at `src/App/assets/images/logo.png` is served from `public/images/app/logo.png`, not `public/images/logo.png`.
 
@@ -92,3 +102,14 @@ Whenever you commit changes to those files, make sure to increase the value of t
 
 > The values 3 and 5 are provided as an example.
 > The important thing is to use values for each file that you haven't used before, so incrementing the value for `v` is a simple way to track each change.
+
+## FAQ
+
+**Q: Where do image assets actually end up after the build?**
+A: Under `public/images/app/`, not `public/images/` directly - the `images` copy target in `vite.config.js` adds an `app/` segment that `fonts` doesn't.
+
+**Q: How do I force browsers to fetch an updated CSS or JS file?**
+A: Add or increment a `?v=` query parameter on the asset URL, for example `app.css?v=3`.
+
+**Q: Should I edit files directly under `public/css`, `public/js`, `public/fonts` or `public/images`?**
+A: No - the `npm` script deletes and rebuilds those folders from `src/App/assets/` on every run.
