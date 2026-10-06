@@ -35,7 +35,7 @@
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Manage Assets - light - Dotkernel Documentation</title>
+        <title>Assets and the Vite build - light - Dotkernel Documentation</title>
 
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
         <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
@@ -334,12 +334,6 @@
         
         
 <li class="subnavigation__list-item ">
-    <a href="../bundle-static-modules/" class="subnavigation__link">Bundle Static Modules</a>
-</li>
-
-        
-        
-<li class="subnavigation__list-item ">
     <a href="../routing/" class="subnavigation__link">Routing</a>
 </li>
 
@@ -370,7 +364,7 @@
         
         
 <li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Manage Assets</a>
+    <a href="./" class="subnavigation__link">Assets and the Vite build</a>
 </li>
 
         
@@ -448,7 +442,7 @@
                     
                 
 
-                <li class="breadcrumb-item active" aria-current="page">Manage Assets</li>
+                <li class="breadcrumb-item active" aria-current="page">Assets and the Vite build</li>
             
         
     </ol>
@@ -505,64 +499,111 @@
         </div>
     
 
-    <h1 id="manage-assets">Manage Assets</h1>
+    <h1 id="assets-and-the-vite-build">Assets and the Vite build</h1>
 <h2 id="summary">Summary</h2>
 <p>Where asset source files live, where Vite builds and copies them to, and how to bust the browser cache when they change.</p>
 <h2 id="details">Details</h2>
-<p>If you haven't already done so, make sure <code>npm</code> is installed.
-You can keep it running during your updates with <code>npm run watch</code> or run this command after the edits are completed <code>npm run build</code>.</p>
-<h2 id="what-are-assets">What are assets?</h2>
-<p>Assets are various files used by your content:</p>
-<ul>
-<li>Images,</li>
-<li>Fonts,</li>
-<li>JavaScript codes,</li>
-<li>SCSS.</li>
-</ul>
-<h2 id="assets-source-and-destination">Assets source and destination</h2>
-<p>The source of these files is the <code>src/App/assets/</code> folder:</p>
-<ul>
-<li>src/App/assets/images</li>
-<li>src/App/assets/fonts</li>
-<li>src/App/assets/js</li>
-<li>src/App/assets/scss</li>
-</ul>
-<p>The <code>npm</code> script processes these files and copies or builds files under the <code>public</code> folder.</p>
+<p>Assets are the static files used by your content: images, fonts, JavaScript, and SCSS.
+<a href="https://vite.dev/">Vite</a> compiles and copies them from <code>src/App/assets</code> into the <code>public</code> folder, which is the only folder the web server serves.</p>
 <blockquote>
-<p>You should not manage the items from the above folders manually.
-The <code>npm</code> script will delete/replace the files when run.</p>
+<p>Prerequisite software: Node.js.
+<code>package.json</code> declares <code>"engines": { "node": "^20.19.0 || &gt;=22.12.0" }</code>, so you need Node 20.19 or later on the 20.x line, or Node 22.12 or later.
+Earlier 20.x releases satisfy "Node 20" and still fail the install.</p>
 </blockquote>
-<p>The <code>fonts</code> folder is copied flat into <code>public/fonts/</code>, but the <code>images</code> folder is copied under an extra <code>app/</code> segment — <code>src/App/assets/images/icon/hand.svg</code> becomes <code>public/images/app/icon/hand.svg</code>, not <code>public/images/icon/hand.svg</code>. See <code>vite.config.js</code> for the exact mapping. The <code>js</code> and <code>scss</code> files are minimized:</p>
+<p>We use Vite:</p>
 <ul>
-<li><code>scss</code> files are minimized under <code>public/css/app.css</code>.</li>
-<li><code>js</code> files are minimized under <code>public/js/app.js</code>.</li>
+<li>To avoid network bottlenecks that can occur when your application has a lot of separate scripts and style sheets.</li>
+<li>To concatenate and compress (uglify) <code>.css</code> and <code>.js</code> files.</li>
+<li>To preprocess <code>.scss</code> files into <code>.css</code>.</li>
+<li>To copy the <code>fonts</code> and <code>images</code> used in your project, from the <code>assets</code> folder to the <code>public</code> folder.</li>
 </ul>
-<p>The above items are by default used in the <code>src/App/templates/layout/default.html.twig</code> file.</p>
+<h2 id="install-the-dependencies">Install the dependencies</h2>
+<p>First install the dependencies into the <code>node_modules</code> directory:</p>
+<pre class="highlight"><code class="language-shell">npm install</code></pre>
+<p>If everything ran ok, you should see a new root folder named <code>node_modules</code> where all the npm packages are installed.
+If <code>npm install</code> fails, this could be caused by user permissions for npm.
+Our recommendation is to install npm through <code>Node Version Manager</code>.</p>
+<h2 id="build-the-assets">Build the assets</h2>
+<p>The <code>fonts</code> folder is copied flat into <code>public/fonts/</code>, but the <code>images</code> folder is copied under an extra <code>app/</code> segment - <code>src/App/assets/images/icon/hand.svg</code> becomes <code>public/images/app/icon/hand.svg</code>, not <code>public/images/icon/hand.svg</code>.
+See <code>vite.config.js</code> for the exact mapping.
+The <code>js</code> and <code>scss</code> files are minimized.</p>
+<p>The <code>build</code> command compiles the components, overwriting as needed:</p>
+<pre class="highlight"><code class="language-shell">npm run build</code></pre>
+<p>The <code>watch</code> command compiles the components, then monitors the source files, and triggers their recompilation when one of them is changed:</p>
+<pre class="highlight"><code class="language-shell">npm run watch</code></pre>
+<h2 id="source-and-destination">Source and destination</h2>
+<p>The source of these files is the <code>src/App/assets/</code> folder.
+The destinations are not symmetrical - the <code>js</code> and <code>scss</code> trees are bundled into a single file each, and <code>images</code> lands in a subfolder of <code>public/images</code>:</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Destination</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/App/assets/scss</code></td>
+<td><code>public/css/app.css</code></td>
+<td>compiled from SCSS and minified into one file</td>
+</tr>
+<tr>
+<td><code>src/App/assets/js</code></td>
+<td><code>public/js/app.js</code></td>
+<td>bundled and minified into one file</td>
+</tr>
+<tr>
+<td><code>src/App/assets/fonts</code></td>
+<td><code>public/fonts/</code></td>
+<td>copied as is</td>
+</tr>
+<tr>
+<td><code>src/App/assets/images</code></td>
+<td><code>public/images/app/</code></td>
+<td>copied as is</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <code>images/app/</code> destination is the one that catches people out: a file at <code>src/App/assets/images/logo.png</code> is served from <code>public/images/app/logo.png</code>, not <code>public/images/logo.png</code>.</p>
+<p>Reference the built files in your templates with <code>asset()</code>:</p>
 <pre class="highlight"><code class="language-twig">&lt;link href="{{ asset('css/app.css') }}" rel="stylesheet" /&gt;
-...
-&lt;script src="{{ asset('js/app.js') }}"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="{{ asset('js/app.js') }}"&gt;&lt;/script&gt;
+&lt;img src="{{ asset('images/app/logo.png') }}" alt="Logo" /&gt;
+&lt;link rel="preload" href="{{ asset('fonts/Avenir-Light.ttf') }}" as="font" type="font/ttf" crossorigin /&gt;</code></pre>
+<p>The first two are used by default in <code>src/App/templates/layout/default.html.twig</code>.</p>
 <blockquote>
 <p>The source and destination folders are configured in the <code>vite.config.js</code> file.</p>
 </blockquote>
+<h2 id="do-not-edit-the-public-folder-by-hand">Do not edit the <code>public</code> folder by hand</h2>
+<p>Treat <code>public/css</code>, <code>public/js</code>, <code>public/fonts</code> and <code>public/images/app</code> as build output.
+Edit the matching files under <code>src/App/assets</code> and rebuild, or your change will be overwritten the next time anyone runs the build.</p>
+<p>The build overwrites the files it produces, but it does not currently clear these folders first.
+A file you remove from <code>src/App/assets</code> therefore stays behind in <code>public</code> until you delete it yourself, and a renamed asset leaves its old copy in place.
+If you need a clean result, delete the generated folders before rebuilding.</p>
+<p><code>public/</code> also holds files Vite never touches at all: <code>index.php</code> (the application's entry point), <code>.htaccess</code>, and <code>robots.txt.dist</code>.
+Neither <code>npm run build</code> nor <code>npm run watch</code> creates, deletes, or modifies them.
+Vite's output directory (<code>public/</code>) sits outside its project root (<code>src/</code>), so by default Vite refuses to empty or otherwise manage anything there beyond the specific files its own plugins write - the compiled <code>css/app.css</code> and <code>js/app.js</code>, and the <code>fonts</code>/<code>images</code> copies.
+You can edit <code>.htaccess</code> or <code>robots.txt.dist</code> freely; a rebuild will never revert them.</p>
 <h2 id="browser-caching-of-js-and-css">Browser caching of <code>js</code> and <code>css</code></h2>
 <p>One thing of note is that browsers cache the <code>js</code> and <code>css</code> files.
 When you push changes to one or both the files, you may notice that updating the site keeps the old version of the files.</p>
 <p>A simple solution to force the browsers to download the newer version of the files is to add a version parameter in the url.
 Whenever you commit changes to those files, make sure to increase the value of the <code>v</code> parameter.</p>
-<pre class="highlight"><code class="language-twig">&lt;link href="{{ asset('css/cls_dk.css?v=3') }}" rel="stylesheet" /&gt;
+<pre class="highlight"><code class="language-twig">&lt;link href="{{ asset('css/app.css?v=3') }}" rel="stylesheet" /&gt;
 ...
-&lt;script src="{{ asset('js/cls_dk.js?v=5') }}"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="{{ asset('js/app.js?v=5') }}"&gt;&lt;/script&gt;</code></pre>
 <blockquote>
 <p>The values 3 and 5 are provided as an example.
 The important thing is to use values for each file that you haven't used before, so incrementing the value for <code>v</code> is a simple way to track each change.</p>
 </blockquote>
 <h2 id="faq">FAQ</h2>
 <p><strong>Q: Where do image assets actually end up after the build?</strong>
-A: Under <code>public/images/app/</code>, not <code>public/images/</code> directly — the <code>images</code> copy target in <code>vite.config.js</code> adds an <code>app/</code> segment that <code>fonts</code> doesn't.</p>
+A: Under <code>public/images/app/</code>, not <code>public/images/</code> directly - the <code>images</code> copy target in <code>vite.config.js</code> adds an <code>app/</code> segment that <code>fonts</code> doesn't.</p>
 <p><strong>Q: How do I force browsers to fetch an updated CSS or JS file?</strong>
 A: Add or increment a <code>?v=</code> query parameter on the asset URL, for example <code>app.css?v=3</code>.</p>
 <p><strong>Q: Should I edit files directly under <code>public/css</code>, <code>public/js</code>, <code>public/fonts</code> or <code>public/images</code>?</strong>
-A: No — the <code>npm</code> script deletes and rebuilds those folders from <code>src/App/assets/</code> on every run.</p>
+A: No - the <code>npm</code> script overwrites the files it produces, but it does not clear these folders first, so your manual edit may survive until the matching source file changes, then disappear unpredictably.</p>
 
 
 
@@ -617,11 +658,19 @@ A: No — the <code>npm</code> script deletes and rebuilds those folders from <c
                 </li>
             
                 <li class="toc__entry">
-                    <a href="#what-are-assets" class="toc__link nav-link">What are assets?</a>
+                    <a href="#install-the-dependencies" class="toc__link nav-link">Install the dependencies</a>
                 </li>
             
                 <li class="toc__entry">
-                    <a href="#assets-source-and-destination" class="toc__link nav-link">Assets source and destination</a>
+                    <a href="#build-the-assets" class="toc__link nav-link">Build the assets</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#source-and-destination" class="toc__link nav-link">Source and destination</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#do-not-edit-the-public-folder-by-hand" class="toc__link nav-link">Do not edit the public folder by hand</a>
                 </li>
             
                 <li class="toc__entry">
