@@ -86,6 +86,11 @@ The build overwrites the files it produces, but it does not currently clear thes
 A file you remove from `src/App/assets` therefore stays behind in `public` until you delete it yourself, and a renamed asset leaves its old copy in place.
 If you need a clean result, delete the generated folders before rebuilding.
 
+`public/` also holds files Vite never touches at all: `index.php` (the application's entry point), `.htaccess`, and `robots.txt.dist`.
+Neither `npm run build` nor `npm run watch` creates, deletes, or modifies them.
+Vite's output directory (`public/`) sits outside its project root (`src/`), so by default Vite refuses to empty or otherwise manage anything there beyond the specific files its own plugins write - the compiled `css/app.css` and `js/app.js`, and the `fonts`/`images` copies.
+You can edit `.htaccess` or `robots.txt.dist` freely; a rebuild will never revert them.
+
 ## Browser caching of `js` and `css`
 
 One thing of note is that browsers cache the `js` and `css` files.
@@ -112,4 +117,4 @@ A: Under `public/images/app/`, not `public/images/` directly - the `images` copy
 A: Add or increment a `?v=` query parameter on the asset URL, for example `app.css?v=3`.
 
 **Q: Should I edit files directly under `public/css`, `public/js`, `public/fonts` or `public/images`?**
-A: No - the `npm` script deletes and rebuilds those folders from `src/App/assets/` on every run.
+A: No - the `npm` script overwrites the files it produces, but it does not clear these folders first, so your manual edit may survive until the matching source file changes, then disappear unpredictably.
